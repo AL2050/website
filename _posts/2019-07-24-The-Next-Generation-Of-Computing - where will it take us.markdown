@@ -176,7 +176,7 @@ With these definitions in our arsenal, what then determines the state in the IPU
 So now, looking at the diagrams below in Figure 8, how do we optimise our algorithm to account for the limited compute capabilities of the IPU?
 
 {:refdef: style="text-align: center;"}
-![DNN](https://github.com/AL2050/personal-website/assets/DNN.JPG)
+![DNN](https://al2050.github.io/personal-website/assets/DNN.JPG)
 {: refdef}
 
 {:refdef: style="text-align: center;"}
