@@ -1,0 +1,30 @@
+#--Hook--#
+Are you one for writing clean code? What if you could not just write clean code in your applications, but write clean, ACCELERATED code in your applications...
+
+Now THAT is a game changer!
+
+#--Outcome--#
+By the end of this article you will have added to your arsenal, a set of skills for making the most of your computer's hardware when writing high-demand applications.
+
+#--Meat--#
+What I am sharing with you in this article are the tools and tricks I have learnt from taking Nvidia's `Fundamentals of Accelerated Computing with CUDA C/C++` course. The purpose behind these methods is to harness the power and parallelism of your computer's Graphical Processing Unit (GPU), in order to further optimise your applications.
+
+You see, the biggest difference between a Central Processing Unit (CPU) and a GPU is the number of processing cores. Your typical Personal Computer's (PC) CPU in 2019 generally comprises of no more than 8 cores, whereas a GPU will contain several thousand cores.
+
+#--Example of use--#
+For example, maybe you are an Aerospace Engineer who wants to implement a Computational Fluid Dynamics modelling application for the next SpaceX rockets. You will be developing a very computationally demanding application and will require a massive amount data processing to produce a high-precision graphical output and data analyses.
+
+Or, maybe you are a Game Engine Developer and you want to design a new game engine that will access the full capabilities of the new Play Station games console.
+
+
+
+
+
+
+
+
+
+
+[Here][https://www.youtube.com/watch?v=Mce_Dlmqppg] is an awesome info-mercial by Nvidia on the potentials of Accelerated Computing with Data Centers and High-Performance Computing
+
+Future of this: IPUs (Graphcore)

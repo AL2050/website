@@ -20,6 +20,22 @@ print_hi('Tom')
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
+Let’s break down what this means.
+
+* First, the IPU is ‘pure’, meaning it is designed purely for Artificial Intelligence applications. The IPU does not deal with any graphics or High-Performance Computing (HPC) applications like GPU’s, and is designed purely for Machine Learning purposes. It is a “Memory-Centric power device”. 
+
+* Second, the IPU is distributed. In other words, the IPU holds thousands of little localised processor and memory modules that all process and exchange information (We will elaborate on this characteristic below.)
+
+* Third, the IPU is parallel, meaning all those little processing units compute parts of the program simultaneously. Once complete, they all exchange messages before repeating the cycle (see Bulk Synchronous Parallel, below.)
+
+* Finally, the IPU’s design characteristics make it readily scalable into very large systems in the near future.
+
+Next, let’s delve deeper into the IPU’s architecture, and discover the motivations behind its design.
+
+Under the hood, the IPU consists entirely of many independent little processors, with their own localised memory, that can send messages to each other through what Simon calls, “a completely stateless, perfect interconnect”. This means that nothing in the IPU is shared, which makes for HUGE parallelism. “There is no shared scheduler, as scheduling is achieved by the compiler” -  as opposed to scheduling directly in the processing unit, which is what occurs in a CPU and GPU - “and there is no shared memory, because this would limit scalability.”
+
+
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
