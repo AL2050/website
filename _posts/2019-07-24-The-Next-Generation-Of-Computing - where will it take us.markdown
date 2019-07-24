@@ -37,7 +37,7 @@ Figure 1: As you can see, the IPU comprises of two parts. The Random-Access-Memo
 {: refdef}
 
 {:refdef: style="text-align: center;"}
-![memory_SRAM](https://al2050.github.io/personal-website/assets/DNN.JPGmemory_SRAM.JPG)
+![memory_SRAM](https://al2050.github.io/personal-website/assets/memory_SRAM.JPG)
 {: refdef}
 
 {:refdef: style="text-align: center;"}
