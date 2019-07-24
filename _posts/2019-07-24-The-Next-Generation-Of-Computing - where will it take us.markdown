@@ -29,7 +29,7 @@ Next, let’s delve deeper into the IPU’s architecture, and discover the motiv
 Under the hood, the IPU consists entirely of many independent little processors, with their own localised memory, that can send messages to each other through what Simon calls, “a completely stateless, perfect interconnect”. This means that nothing in the IPU is shared, which makes for HUGE parallelism. “There is no shared scheduler, as scheduling is achieved by the compiler” -  as opposed to scheduling directly in the processing unit, which is what occurs in a CPU and GPU - “and there is no shared memory, because this would limit scalability.”
 
 {:refdef: style="text-align: center;"}
-![IPU]({{site.url}}{{site.baseurl}}/assets/IPU.jpg)
+![IPU](https://github.com/AL2050/personal-website/assets/IPU.jpg)
 {: refdef}
 
 {:refdef: style="text-align: center;"}
@@ -37,7 +37,7 @@ Figure 1: As you can see, the IPU comprises of two parts. The Random-Access-Memo
 {: refdef}
 
 {:refdef: style="text-align: center;"}
-![memory_SRAM]({{site.url}}{{site.baseurl}}/assets/memory_SRAM.jpg)
+![memory_SRAM](https://github.com/AL2050/personal-website/assets/memory_SRAM.jpg)
 {: refdef}
 
 {:refdef: style="text-align: center;"}
@@ -55,8 +55,8 @@ The goal is to achieve as much bandwidth for the same power budget as today’s 
 Well, this is perfect for Machine Intelligence applications - higher compute for the same power usage. Fantastic!
 
 {:refdef: style="text-align: center;"}
-![cpu_mem]({{site.url}}{{site.baseurl}}/assets/cpu_mem.jpg)
-![gpu_mem]({{site.url}}{{site.baseurl}}/assets/gpu_mem.jpg)
+![cpu_mem](https://github.com/AL2050/personal-website/assets/cpu_mem.jpg)
+![gpu_mem](https://github.com/AL2050/personal-website/assets/gpu_mem.jpg)
 {: refdef}
 
 Figure 3: Left - External Synchronous-Dynamic-Random-Access-Memory cards working for a CPU; Right - A recently innovation for external memory to a GPU, known as High-Bandwidth Memory (HMB).
@@ -74,7 +74,7 @@ Why is power a limiting factor?
 Power limits all digital silicon today, and so, we must make the most of the power we can harness from the utilisation of this material in our electronic devices. There is in fact an upper limit for power you can get out of a silicon chip, and secondly, there is a limit to the size at which we can manufacture a silicon chip.
 
 {:refdef: style="text-align: center;"}
-![silicon]({{site.url}}{{site.baseurl}}/assets/silicon.jpg)
+![silicon](https://github.com/AL2050/personal-website/assets/silicon.jpg)
 {: refdef}
 
 {:refdef: style="text-align: center;"}
@@ -84,7 +84,7 @@ Figure 4: The upper limit for the manufacturing of a chip is approximately 8 squ
 Compared with the IPU, GPU’s tend not to make full use of their available power for Machine Learning applications, and therefore there is room for improvement in processor design for this particular purpose.
 
 {:refdef: style="text-align: center;"}
-![GPU]({{site.url}}{{site.baseurl}}/assets/GPU.jpg)
+![GPU](https://github.com/AL2050/personal-website/assets/GPU.jpg)
 {: refdef}
 
 {:refdef: style="text-align: center;"}
@@ -101,7 +101,7 @@ As Simon puts it, “We get to use all of the power available, and we get the an
 
 
 {:refdef: style="text-align: center;"}
-![powerBudget]({{site.url}}{{site.baseurl}}/assets/powerBudget.jpg)
+![powerBudget](https://github.com/AL2050/personal-website/assets/powerBudget.jpg)
 {: refdef}
 
 {:refdef: style="text-align: center;"}
@@ -114,7 +114,7 @@ This is where ‘Bulk Synchronous Parallel’ (BSP) computation comes into play.
 
 
 {:refdef: style="text-align: center;"}
-![BSP]({{site.url}}{{site.baseurl}}/assets/BSP.jpg)
+![BSP](https://github.com/AL2050/personal-website/assets/BSP.jpg)
 {: refdef}
 
 {:refdef: style="text-align: center;"}
@@ -176,7 +176,7 @@ With these definitions in our arsenal, what then determines the state in the IPU
 So now, looking at the diagrams below in Figure 8, how do we optimise our algorithm to account for the limited compute capabilities of the IPU?
 
 {:refdef: style="text-align: center;"}
-![DNN]({{site.url}}{{site.baseurl}}/assets/DNN.jpg)
+![DNN](https://github.com/AL2050/personal-website/assets/DNN.jpg)
 {: refdef}
 
 {:refdef: style="text-align: center;"}
