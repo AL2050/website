@@ -119,7 +119,7 @@ Figure 6:
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-[Physical NAND Gate Circuit Implementation](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit.pdf){:target="_blank"}
+[Physical NAND Gate Circuit Implementation](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit-Model.png){:target="_blank"}
 {:refdef}
 
 
