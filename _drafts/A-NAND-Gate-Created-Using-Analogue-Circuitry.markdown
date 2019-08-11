@@ -25,7 +25,7 @@ We have analogue devices and then we have digital devices. An analogue system tr
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 1: You can imagine a continuous signal as being perfectly smooth. There are no steps, or jumps its 
+Figure #: You can imagine a continuous signal as being perfectly smooth. There are no steps or jumps throughout its transmission. 
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -33,15 +33,15 @@ Figure 1: You can imagine a continuous signal as being perfectly smooth. There a
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 2: The <span style="color:red">**red line**</span> represents the discrete signal that would be produced in this instance.
+Figure #: The <span style="color:red">**red line**</span> represents the discrete signal that would be produced, by discretising this signal, in this instance. As you can see, this discrete signal consists of discrete steps. The <span style="color:red">**red line**</span> is the ideal scenario. In reality, a discretised signal would have ramps at the rising and falling edges between discrete states.
 {:refdef}
 
 
 It is important to note that naturally, all signals are truly analogue. So, why do we design systems to take these analogue signal and make them digital? Well, by designing circuitry to control signals in a discrete manner enables a higher level of control, efficiency, reliability and precision when computing and storing information.
 
-Digital electronics systems can process and store information much more readily, which is very useful in today's modern digital computers. To add to that, digital electronics systems are more immune, than analogue systems, to signal noise that might be experienced over a communications channel, for example.
+Digital electronic systems can process and store information much more readily, which is very useful in today's modern digital computers. To add to that, compared with analogue systems, digital electronics systems are more immune to signal noise, that might be experienced, for example, over a communications channel.
 
-The following combinations are in fact possible.
+The following types of system are in fact possible.
 
 |Type|Example|
 |-----|
@@ -49,33 +49,37 @@ The following combinations are in fact possible.
 |-----|
 |Digital Non-Electronic Devices|[The Lehmer Sieve][Lehmer]{:target="_blank"}|
 |-----|
-|Analogue Electronic Devices|[Crystal Radio Recievers][Crystal]{:target="_blank"}|
+|Analogue Electronic Devices|[Crystal Radio Receivers][Crystal]{:target="_blank"}|
 |-----|
 |Digital Electronic Devices|[Modern Computers][Modern-Computers]{:target="_blank"} (PC's, Mobile Phones)|
 |-----|
 
-The significance of digital circuitry motivated me to design and build a circuit that is the equivalent of a NAND-Gate; a logic gate, which is a component designed to implement what is called Boolean Logic, such as AND, OR, NOT, and so on.
-
-AND, for example, means that if we have a black box, with two or more inputs and one output, then for the output to trigger HIGH, all inputs the the black box must also be HIGH. If any one of those inputs is LOW, then the output will be LOW.
-
+The significance of digital circuitry motivated me to design and build a circuit that is the equivalent of a NAND-Gate; a logic gate, which is a component designed to implement what is called [Boolean Logic][boolean]{:target="_blank"}.
 
 {:refdef: style="text-align: center;"}
 ![blackBox](https://al2050.github.io/personal-website/assets/blackBox.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-![blackBox-truthTable](https://al2050.github.io/personal-website/assets/blackBox_truthTable.png)
+Figure #: The logical operator AND, for example, means that if we have a black box, with two or more inputs and one output, then for the output to trigger HIGH, all inputs must also be HIGH. If any one of those inputs is LOW, then the output will be LOW. The inverse is true for NAND (NOT-AND).
 {:refdef}
 
+{:refdef: style="text-align: center;"}
+![blackBox-truthTable](https://al2050.github.io/personal-website/assets/blackBoxTruthTable.png)
+{:refdef}
 
+{:refdef: style="text-align: center;"}
+Figure #: A table such as this one is called a *truth table*. A mathematical logic table relating the inputs to a system with the output.
+{:refdef}
 
-This systems has been designed in it's simplest form as a Resistor-Transistor logic configuration, using transistors as switches and resistors to control voltage and current values, to agree with the specifications of the transistors used, which will be explained in the next section.
+The physical NAND-Gate has been designed in it's simplest form as a Resistor-Transistor logic configuration, using transistors as switches and resistors to control voltage and current levels.
 
 Since we are working with a purely DC voltage source, the complexity of the physical system is greatly reduced. We need not worry about parasitic capacitances, transconductance or similar. Also, we are using the transistors as switches, therefore we are not necessarily concerned about performance, as we would if we were designing a voltage amplifier, where precision is essential.
 
+Before we delve into the specifics of the design, let's see how the transistor makes digitisation of analogue signals readily achievable.
 
 ## The Theory of the Transistor - Small but Mighty
-The transistor is well known as being the catalyst of the [Information Age][Information-Age]{:target="_blank"}. It's most common use is as an electronic switch in today's computers, a small but mighty switch that can toggle at exceptionally high rates, while being manufactured on the low-end of the nano-scale.
+The transistor is well known for being the catalyst of the [Information Age][Information-Age]{:target="_blank"}. It's most common use is as an electronic switch in today's computers, a small but mighty switch that can toggle at exceptionally high rates, while being manufactured at a size, on the low-end of the nano-scale.
 
 The two applications for the transistor.
 
@@ -87,46 +91,39 @@ The two applications for the transistor.
 
 
 ### What's inside a transistor?
-The name transistor is a portmanteau of the words *transfer* and *resistor*, so transistor etymologically means *transfer resistor*. Resistance isn't physically transferred by a transistor, but, due to the transistor's physical properties, there is a relative difference between the input impedence and the output impedence.
+The name transistor is a portmanteau of the words *transfer* and *resistor*, so transistor etymologically means *transfer resistor*. Resistance isn't physically transferred by a transistor, but, due to the transistor's physical properties, there is a relative difference between the input resistance and the output resistance.
 
-#### How is this possible, and why is it useful?
 
-Everything that a transistor can do is entirely possible to achieve with other components. The transistor has the advantage of being able to do the same things quicker, while being smaller in size, enabling more computation, with lower power, like we see today in computers, with logic gates, and can be aachieved at a much higher precision.
+#### A brief note on AC-driven electronic systems
+ 
+ When dealing with AC electricity, we would refer to the resistance in terms of what is called impedence. Impedence is the effective resistance resulting in an AC-driven environment. 
+ 
+ Impedence is mathematically represented as a vector, containing magnitude, which is the resistance caused by the DC offset in the electronic system, and a phase, known as the reactance. 
+ 
+ Reactance can be thought of as an opposition to a change in current or voltage, which occurs when an AC signal is transmitted through an electronic system.
+ 
+ In this design, these extra details are removed through the use of a DC voltage supply.
+ 
+ The benefit of using AC electricity is that an AC voltage can be much more efficiently amplified compared with a DC voltage source. However, we are working with a small electronic system over a very small distance range, and therefore do not require an AC supply.
 
-For example, set up a potentiometer with one end tied to a collector voltage, **Vcc**, and the wiper of the potentiometer connected to ground. Now, if we then move the wiper from one end to the other, we change the input impedence
 
+### How does the transistor act like a switch, and why is it useful?
+[switch](https://www.quora.com/Why-do-we-use-transistor-as-a-switch){:target="_blank"}
+
+Everything that a transistor can do is entirely possible to achieve with other components. The transistor has the advantage of being able to do the same things quicker, while being smaller in size, enabling more computation, with lower power - like we see today's in computers - and this can all be achieved at a much higher precision than if we did than mechanically.
+
+#### So, how can we use a transistor as a switch?
+
+The transistor we use in this desin is the [BC548 transistor][fairchild], manufactured by Fairchild Semiconductor International.
+
+It is an NPN transistor. 
+
+[How-a-Semiconductor-works-BenEater]: https://www.youtube.com/watch?v=33vbFFFn04k
+[How-a-Transistor-works-BenEater]: https://www.youtube.com/watch?v=DXvAlwMAxiA
 
 {:refdef: style="text-align: center;"}
-![pot1](https://al2050.github.io/personal-website/assets/pot.png)
+![NPN-Explained](https://al2050.github.io/personal-website/assets/NPN.jpg)
 {:refdef}
-
-{:refdef: style="text-align: center;"}
-Figure 3: Picture a potentiometer from a birds-eye view. The wiper of the potentiometer is represented by the red arrow. The wiper controls the resistance level, by acting like a variable potential divider circuit. As the red arrow moves clockwise, the resistance will increase, and therefore, the output voltage will also increase for the same current passing through the potentiometer.
-{: refdef}
-
-{:refdef: style="text-align: center;"}
-![pot2](https://al2050.github.io/personal-website/assets/pot2.png)
-{:refdef}
-
-{:refdef: style="text-align: center;"}
-Figure 4: 
-{: refdef}
-
-{:refdef: style="text-align: center;"}
-![potChange1](https://al2050.github.io/personal-website/assets/potChange1.png)
-{:refdef}
-
-{:refdef: style="text-align: center;"}
-Figure 5: 
-{: refdef}
-
-{:refdef: style="text-align: center;"}
-![potChange2](https://al2050.github.io/personal-website/assets/potChange2.png)
-{:refdef}
-
-{:refdef: style="text-align: center;"}
-Figure 6: 
-{: refdef}
 
 
 ## Modeling the NAND-Gate circuit
@@ -161,14 +158,16 @@ Figure #:
 [Modern-Computers]: https://en.wikipedia.org/wiki/Universal_Turing_machine#Stored-program_computer
 
 
+[boolean]: https://www.lotame.com/what-is-boolean-logic/
+
 [Transceiver]: https://en.wikipedia.org/wiki/Transceiver
 
 [Potentiometer]: https://www.quora.com/What-is-transferring-resistance-in-reference-to-a-transistor
 
 
-[Information-Age]: https://en.wikipedia.org/wiki/Information_Age
+[Information-Age]: https://en.wikipedia.org/wiki/Information_Age#Innovations
 
-
+[fairchild]: https://www.onsemi.com/products/discretes-drivers/general-purpose-and-low-vcesat-transistors/bc548
 
 
 
