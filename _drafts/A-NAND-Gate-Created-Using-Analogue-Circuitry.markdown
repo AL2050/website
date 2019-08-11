@@ -72,9 +72,9 @@ The two applications for the transistor.
 ### What's inside a transistor?
 The name transistor is a portmanteau of the words *transfer* and *resistor*, so transistor etymologically means *transfer resistor*. Resistance isn't physically transferred by a transistor, but, due to the transistor's physical properties, there is a relative difference between the input impedence and the output impedence.
 
-#### How is this possible, and why is it useful / relevent?
+#### How is this possible, and why is it useful?
 
-Everything that a transistor can do is entirely possible to achieve with other components. The transistor has the advantage of being able to do the same things quicker, while being smaller in size, enabling more computation, with lower power (computers - logic gates), and higher precision.
+Everything that a transistor can do is entirely possible to achieve with other components. The transistor has the advantage of being able to do the same things quicker, while being smaller in size, enabling more computation, with lower power, like we see today in computers, with logic gates, and can be aachieved at a much higher precision.
 
 For example, set up a potentiometer with one end tied to a collector voltage, **Vcc**, and the wiper of the potentiometer connected to ground. Now, if we then move the wiper from one end to the other, we change the input impedence
 
@@ -84,16 +84,32 @@ For example, set up a potentiometer with one end tied to a collector voltage, **
 {:refdef}
 
 {:refdef: style="text-align: center;"}
+Figure 3: Picture a potentiometer from a birds-eye view. The wiper of the potentiometer is represented by the red arrow. The wiper controls the resistance level, by acting like a variable potential divider circuit. As the red arrow moves clockwise, the resistance will increase, and therefore, the output voltage will also increase for the same current passing through the potentiometer.
+{: refdef}
+
+{:refdef: style="text-align: center;"}
 ![pot2](https://al2050.github.io/personal-website/assets/pot2.png)
 {:refdef}
+
+{:refdef: style="text-align: center;"}
+Figure 4: 
+{: refdef}
 
 {:refdef: style="text-align: center;"}
 ![potChange1](https://al2050.github.io/personal-website/assets/potChange1.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
+Figure 5: 
+{: refdef}
+
+{:refdef: style="text-align: center;"}
 ![potChange2](https://al2050.github.io/personal-website/assets/potChange2.png)
 {:refdef}
+
+{:refdef: style="text-align: center;"}
+Figure 6: 
+{: refdef}
 
 
 ## Modeling the NAND-Gate circuit
