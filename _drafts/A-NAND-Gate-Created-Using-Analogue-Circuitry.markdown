@@ -22,7 +22,7 @@ We have analogue devices and then we have digital devices. An analogue system tr
 
 It is important to note that naturally, all signals are truly analogue. So, why do we design systems to take these analogue signal and make them digital? Well, by designing circuitry to control signals in a discrete manner enables a higher level of control, efficiency, reliability and precision when computing and storing information.
 
-Digital electronics systems can process and stores much more information, which is very useful in today's modern digital computers. 
+Digital electronics systems can process and store information much more readily, which is very useful in today's modern digital computers. To add to that, digital electronics systems are more immune, than analogue systems, to signal noise that might be experienced over a communications channel, for example.
 
 The following combinations are in fact possible.
 
@@ -37,8 +37,22 @@ The following combinations are in fact possible.
 |Digital Electronic Devices|[Modern Computers][Modern-Computers]{:target="_blank"} (PC's, Mobile Phones)|
 |-----|
 
-The significance of digital circuitry motivated me to design and build a circuit that is the equivalent of a NAND-Gate, using transistors as switches and resistors to control voltage and current values, to agree with the specifications of the transistors used, which will be explained in the next section.
+The significance of digital circuitry motivated me to design and build a circuit that is the equivalent of a NAND-Gate; a logic gate, which is a component designed to implement what is called Boolean Logic, such as AND, OR, NOT, and so on.
 
+AND, for example, means that if we have a black box, with two or more inputs and one output, then for the output to trigger HIGH, all inputs the the black box must also be HIGH. If any one of those inputs is LOW, then the output will be LOW.
+
+
+{:refdef: style="text-align: center;"}
+![blackBox](https://al2050.github.io/personal-website/assets/blackBox.png)
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+![blackBox-truthTable](https://al2050.github.io/personal-website/assets/blackBox_truthTable.png)
+{:refdef}
+
+
+
+This systems has been designed in it's simplest form as a Resistor-Transistor logic configuration, using transistors as switches and resistors to control voltage and current values, to agree with the specifications of the transistors used, which will be explained in the next section.
 
 Since we are working with a purely DC voltage source, the complexity of the physical system is greatly reduced. We need not worry about parasitic capacitances, transconductance or similar. Also, we are using the transistors as switches, therefore we are not necessarily concerned about performance, as we would if we were designing a voltage amplifier, where precision is essential.
 
@@ -85,11 +99,11 @@ For example, set up a potentiometer with one end tied to a collector voltage, **
 ## Modeling the NAND-Gate circuit
 
 {:refdef: style="text-align: center;"}
-![BC548-Datasheet](https://al2050.github.io/personal-website/assets/BC548.pdf)
+[BC548-Datasheet](https://al2050.github.io/personal-website/assets/BC548.pdf){:target="_blank"}
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-![Multisim-NAND-Gate-Circuit](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit.pdf)
+[Physical NAND Gate Circuit Implementation](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit.pdf){:target="_blank"}
 {:refdef}
 
 
@@ -112,7 +126,7 @@ For example, set up a potentiometer with one end tied to a collector voltage, **
 
 [Lehmer]: https://en.wikipedia.org/wiki/Lehmer_sieve
 [Crystal]: https://en.wikipedia.org/wiki/Crystal_radio
-[Modern-Computers]: https://en.wikipedia.org/wiki/Universal_Turing_machine
+[Modern-Computers]: https://en.wikipedia.org/wiki/Universal_Turing_machine#Stored-program_computer
 
 
 [Transceiver]: https://en.wikipedia.org/wiki/Transceiver
