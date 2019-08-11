@@ -25,7 +25,7 @@ We have analogue devices and then we have digital devices. An analogue system tr
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 1: 
+Figure 1: You can imagine a continuous signal as being perfectly smooth. There are no steps, or jumps its 
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -136,17 +136,18 @@ Figure 6:
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-[NAND Gate Circuit Model in Multisim](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit-Model.jpg){:target="_blank"}
+![NAND Gate Circuit Model in Multisim](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit-Model.JPG)
 {:refdef}
 
-
+{:refdef: style="text-align: center;"}
+Figure #: 
+{: refdef}
 
 ## Building the NAND-Gate circuit on a Bread-Board
 
 {:refdef: style="text-align: center;"}
 ![Physical-NAND-Gate-Circuit](https://al2050.github.io/personal-website/assets/NAND_Gate_Circuit.jpg)
 {:refdef}
-
 
 
 
