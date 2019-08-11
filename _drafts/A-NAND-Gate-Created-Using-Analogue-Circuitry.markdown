@@ -18,7 +18,24 @@ tags: [hardware, electronics-projects, logic-gates]
 <!--Explain what is involved if we used an AC voltage source. Why don't we need it? What do general-purpose computers use? AC?-->
 
 ## Idea and motivation
-We have analogue devices and then we have digital devices. An analogue system transmits continuous information, and in the case of an electronic system, a continuous signal. Digital systems, on the other hand, are configured to transmit and / or recieve signals that have a discrete number of states.
+We have analogue devices and then we have digital devices. An analogue system transmits continuous information, and in the case of an electronic system, a continuous signal. Digital systems, on the other hand, are configured to transmit and recieve signals that have a discrete number of states.
+
+{:refdef: style="text-align: center;"}
+![continuous](https://al2050.github.io/personal-website/assets/cont.png)
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+Figure 1: 
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+![discrete](https://al2050.github.io/personal-website/assets/discr.png)
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+Figure 2: The <span style="color:red">**red line**</span> represents the discrete signal that would be produced in this instance.
+{:refdef}
+
 
 It is important to note that naturally, all signals are truly analogue. So, why do we design systems to take these analogue signal and make them digital? Well, by designing circuitry to control signals in a discrete manner enables a higher level of control, efficiency, reliability and precision when computing and storing information.
 
@@ -119,8 +136,9 @@ Figure 6:
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-[Physical NAND Gate Circuit Implementation](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit-Model.png){:target="_blank"}
+[NAND Gate Circuit Model in Multisim](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit-Model.jpg){:target="_blank"}
 {:refdef}
+
 
 
 ## Building the NAND-Gate circuit on a Bread-Board
@@ -132,12 +150,9 @@ Figure 6:
 
 
 
+
+
 [NAND-Gate-Design]: https://www.electronics-tutorials.ws/logic/logic_5.html
-
-
-
-
-
 
 
 [Lehmer]: https://en.wikipedia.org/wiki/Lehmer_sieve
