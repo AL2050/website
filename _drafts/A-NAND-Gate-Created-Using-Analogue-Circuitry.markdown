@@ -140,6 +140,10 @@ Imagine a segment of N-Type and a segment of P-Type seamlessly connected like so
 
 
 
+
+
+
+<!--
 [How-a-Semiconductor-works-BenEater]: https://www.youtube.com/watch?v=33vbFFFn04k
 [How-a-Transistor-works-BenEater]: https://www.youtube.com/watch?v=DXvAlwMAxiA
 [hyperPhysics]: http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/dope.html
@@ -147,6 +151,7 @@ Imagine a segment of N-Type and a segment of P-Type seamlessly connected like so
 [semi-conductor_MOS]: https://physics.info/semiconductors/
 
 [pn-junction]: https://en.wikipedia.org/wiki/P%E2%80%93n_junction
+-->
 
 <!--
 {:refdef: style="text-align: center;"}
