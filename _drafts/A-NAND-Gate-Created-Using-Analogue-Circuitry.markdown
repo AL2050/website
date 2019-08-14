@@ -183,7 +183,7 @@ This brings us onto the internals of the transistor.
 Take our NP junction from the last section, and now sandwich the P-Type region with a second N-Type segment. This is the equivalent of two back-to-back diodes. Each segment of the NPN sandwich are controlled by a terminal like so:
 
 {:refdef: style="text-align: center;"}
-![NP-Deplete](https://al2050.github.io/personal-website/assets/npnbjt.jpg)
+![NPN-BJT](https://al2050.github.io/personal-website/assets/npnbjt.jpg)
 {:refdef}
 
 
