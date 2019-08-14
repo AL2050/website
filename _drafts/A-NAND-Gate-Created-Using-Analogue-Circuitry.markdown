@@ -102,6 +102,7 @@ Before we delve into the specifics of the design, let's first delve into the tra
 Figure 5: *[Source](https://www.teepublic.com/t-shirt/1774269-superman-letter-t){:target="_blank"}*
 {:refdef}
 
+The name transistor is a portmanteau of the words *transfer* and *resistor*, so transistor etymologically means *transfer resistor*. Resistance isn't physically transferred by a transistor, but, due to the transistor's physical properties, there is a relative difference between the input resistance and the output resistance.
 
 The transistor is well known for being the catalyst of the [Information Age][Information-Age]{:target="_blank"}. It's most common use is as an electronic switch in today's computers, a small but mighty switch that can toggle at exceptionally high rates, while being manufactured at a size, on the low-end of the nano-scale.
 
@@ -213,35 +214,24 @@ Applying a conventional current to the upper N-Type segment, we will find that m
 
 V<sub>cc</sub> is the most positive region, while the ground, at the bottom, is the most negative region.
 
-{:refdef: style="text-align: center;"}
-![2-switches](https://al2050.github.io/personal-website/assets/twoSwitches.jpg)
-{:refdef}
-
 By applying a conventional current to the Base, we are in theory adding holes to the P-Type segment. This increases the positive potential of the P-Type region, enticing negative electrons to fill the holes in the P-Type region, from the N-Type region above. This is kind of like building up electrical momentum in the downwards direction, and is equivalent to closing a manual electrical switch.
 
 Characteristically, only a small base current is required to achieve a significantly larger current through the NPN composite. Generally, the P-Type region is small than either of the N-Type regions, but large enough to enable sub-atomic particles to gain enough momentum to pass through the NPN composite.
 
-### How does the transistor act like a switch, and why is it useful?
-[switch](https://www.quora.com/Why-do-we-use-transistor-as-a-switch){:target="_blank"}
-[switch2]: https://www.electronics-tutorials.ws/transistor/tran_4.html
-
-The *bipolar* term in BJT means that there are two polarised regions in the transistor. The BJT is equivalent to two diodes, that are in series in either a back-to-back or a face-to-face arrangement. [Here is a comprehensive article covering the theory behind the diode][diodeTheory].
-
-The BC548 transistor is an NPN transistor. What this means is that 
-
-
-
-The name transistor is a portmanteau of the words *transfer* and *resistor*, so transistor etymologically means *transfer resistor*. Resistance isn't physically transferred by a transistor, but, due to the transistor's physical properties, there is a relative difference between the input resistance and the output resistance.
-
-Everything that a transistor can do - namely voltage amplification and switching - is entirely possible to achieve with other components. The transistor has the advantage of being able to do the same things quicker, while being smaller in size, enabling more computation, with lower power - like we see in today's computers - and this can all be achieved at a much higher precision than if we did the same task mechanically.
+The *Bipolar* term in BJT means that there are two polarised regions in the transistor. The BJT is equivalent to two diodes, that are in series in either a back-to-back or a face-to-face arrangement. [Here is a comprehensive article covering the theory behind the diode][diodeTheory].
 
 The transistor we use in this design is the [BC548 transistor][fairchild], manufactured by Fairchild Semiconductor International.
 
-It is an NPN transistor, and is made from semiconductor material.
-
+### Why not just use a switch? Why do we need a transistor?
+Everything that a transistor can do - namely voltage amplification and switching - is entirely possible to achieve with other components. The transistor has the advantage of being able to do the same things quicker, while being smaller in size, enabling more computation, with lower power - like we see in today's computers - and this can all be achieved at a much higher precision than if we did the same task mechanically.
 
 
 ## Modeling the NAND-Gate circuit
+{:refdef: style="text-align: center;"}
+![2-switches](https://al2050.github.io/personal-website/assets/twoSwitches.jpg)
+{:refdef}
+
+
 
 {:refdef: style="text-align: center;"}
 ![NAND Gate Circuit Model in Multisim](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit-Model.JPG)
