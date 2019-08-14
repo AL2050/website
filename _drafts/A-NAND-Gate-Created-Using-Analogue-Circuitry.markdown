@@ -17,15 +17,17 @@ tags: [hardware, electronics-projects, logic-gates]
 
 <!--Explain what is involved if we used an AC voltage source. Why don't we need it? What do general-purpose computers use? AC?-->
 
-## Idea and motivation
+## The Interface between the Analogue and Digital worlds
 We have analogue devices and then we have digital devices. An analogue system transmits continuous information, and in the case of an electronic system, a continuous signal. Digital systems, on the other hand, are configured to transmit and recieve signals that have a discrete number of states.
+
+This is typically achieve through an electronic device known as an Analogue-to-Digital Converter (ADC), which defines a set of discrete states. The analogue waves passing through an ADC is rounded either up or down depending on its value at a specific point.
 
 {:refdef: style="text-align: center;"}
 ![continuous](https://al2050.github.io/personal-website/assets/cont.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: You can imagine a continuous signal as being perfectly smooth. There are no steps or jumps throughout its transmission. 
+Figure 1: *You can imagine a continuous signal as being perfectly smooth. There are no steps or jumps throughout its transmission.* 
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -33,15 +35,15 @@ Figure #: You can imagine a continuous signal as being perfectly smooth. There a
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: The <span style="color:red">**red line**</span> represents the discrete signal that would be produced, by discretising this signal, in this instance. As you can see, this discrete signal consists of discrete steps. The <span style="color:red">**red line**</span> is the ideal scenario. In reality, a discretised signal would have ramps at the rising and falling edges between discrete states.
+Figure 2: *The <span style="color:red">**red line**</span> represents the discrete signal that would be produced, by discretising this signal, in this instance. As you can see, this discrete signal consists of discrete steps. The <span style="color:red">**red line**</span> is the ideal scenario, where the time to transition between states is zero. In reality, a discretised signal would have ramps at the rising and falling edges between discrete states, since it takes a small amount of time to transition from one state to another. The conversion of the **black** signal into the <span style="color:red">**red**</span> signal is achieved through the use of a device called an [Analog-to-Digital Converter][ADC]{:target="_blank"}, to quantise the wave at specific step values*
 {:refdef}
 
 
-It is important to note that naturally, all signals are truly analogue. So, why do we design systems to take these analogue signal and make them digital? Well, by designing circuitry to control signals in a discrete manner enables a higher level of control, efficiency, reliability and precision when computing and storing information.
+It is important to note that naturally, all signals are truly analogue. So, why do we design systems to take these analogue signals and make them digital? Well, by designing circuitry to control signals in a discrete manner enables a higher level of control, efficiency, reliability and precision when computing and storing information.
 
-Digital electronic systems can process and store information much more readily, which is very useful in today's modern digital computers. To add to that, compared with analogue systems, digital electronics systems are more immune to signal noise, that might be experienced, for example, over a communications channel.
+Digital electronic systems can process and store information much more readily, which is very useful in today's modern digital computers. Also, compared with analogue systems, digital electronics systems are more immune to external noise interference during transmission, that might be experienced, for example, over a communications channel.
 
-The following types of system are in fact possible.
+The following types of physical devices are in fact possible.
 
 |Type|Example|
 |-----|
@@ -54,14 +56,15 @@ The following types of system are in fact possible.
 |Digital Electronic Devices|[Modern Computers][Modern-Computers]{:target="_blank"} (PC's, Mobile Phones)|
 |-----|
 
-The significance of digital circuitry motivated me to design and build a circuit that is the equivalent of a NAND-Gate; a logic gate, which is a component designed to implement what is called [Boolean Logic][boolean]{:target="_blank"}.
+## The Idea and Motivation 
+The significance of digital circuitry motivated me to design and build an analogue circuit that is the equivalent of a digital NAND-Gate; a component designed to implement what is called [Boolean Logic][boolean]{:target="_blank"}.
 
 {:refdef: style="text-align: center;"}
 ![blackBox](https://al2050.github.io/personal-website/assets/blackBox.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: The logical operator AND, for example, means that if we have a black box, with two or more inputs and one output, then for the output to trigger HIGH, all inputs must also be HIGH. If any one of those inputs is LOW, then the output will be LOW. The inverse is true for NAND (NOT-AND).
+Figure 3: *Imagine we have a black box, containing the necessary circuitry to represent a logic gate that obeys Boolean AND logic. There are two or more inputs and a single output. For the output to trigger HIGH/ON, all inputs must also be HIGH/ON. If any input is LOW/OFF, the output will also be LOW/OFF. The inverse conditions are true for a [NAND][nand]{:target="_blank"} gate, a short-hand for NOT-AND gate, where [NOT][not]{:target="_blank"} outputs the inverse of the corresponding input.*
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -69,16 +72,25 @@ Figure #: The logical operator AND, for example, means that if we have a black b
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: A table such as this one is called a *truth table*. A mathematical logic table relating the inputs to a system with the output.
+Figure 4: *A table such as this one is called a [truth table][truthTable]{:target="_blank"}. A mathematical logic table relating the inputs to a system with the output.*
 {:refdef}
 
-The physical NAND-Gate has been designed in it's simplest form as a Resistor-Transistor logic configuration, using transistors as switches and resistors to control voltage and current levels.
+The physical NAND-Gate designed in this project, is a Resistor-Transistor logic (RTL) configuration, using transistors as switches and resistors to regulate voltage and current levels at point in the circuit to agree with the requirements of the two transistors - our inputs - and Light-Emitting Diode (LED) - our output.
 
-Since we are working with a purely DC voltage source, the complexity of the physical system is greatly reduced. We need not worry about parasitic capacitances, transconductance or similar. Also, we are using the transistors as switches, therefore we are not necessarily concerned about performance, as we would if we were designing a voltage amplifier, where precision is essential.
+Since we are working with a purely DC voltage source, the complexity of the physical system is greatly reduced. We need not worry about parasitic capacitances, transconductance or similar. Also, we are using the transistors as switches, therefore we are not necessarily concerned about performance, as we would if we were designing a voltage amplifier, where precision is essential, or working with high-speed compute, where rapid transistor switching is required.
 
-Before we delve into the specifics of the design, let's see how the transistor makes digitisation of analogue signals readily achievable.
+Before we delve into the specifics of the design, let's first delve into the transistor's internal to gain a deeper understanding into how it is able to behave as a switch, to enable use to create a system that operates under Boolean logic.
 
-## The Theory of the Transistor - Small but Mighty
+## Transistor Internals 101 - A Small but Mighty Device
+{:refdef: style="text-align: center;"}
+![smallButMighty](https://al2050.github.io/personal-website/assets/smallButMighty.jpg)
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+Figure 5: *Reference https://www.teepublic.com/t-shirt/1774269-superman-letter-t*
+{:refdef}
+
+
 The transistor is well known for being the catalyst of the [Information Age][Information-Age]{:target="_blank"}. It's most common use is as an electronic switch in today's computers, a small but mighty switch that can toggle at exceptionally high rates, while being manufactured at a size, on the low-end of the nano-scale.
 
 The two applications for the transistor.
@@ -95,39 +107,57 @@ The name transistor is a portmanteau of the words *transfer* and *resistor*, so 
 
 
 #### A brief note on AC-driven electronic systems
+When dealing with AC electricity, we would refer to the resistance in terms of what is called impedence. Impedence is the effective resistance resulting in an AC-driven environment. 
  
- When dealing with AC electricity, we would refer to the resistance in terms of what is called impedence. Impedence is the effective resistance resulting in an AC-driven environment. 
+Impedence is mathematically represented as a vector, containing magnitude, which is the resistance caused by the DC offset in the electronic system, and a phase, known as the reactance. 
  
- Impedence is mathematically represented as a vector, containing magnitude, which is the resistance caused by the DC offset in the electronic system, and a phase, known as the reactance. 
+Reactance can be thought of as an opposition to a change in current or voltage, which occurs when an AC signal is transmitted through an electronic system.
  
- Reactance can be thought of as an opposition to a change in current or voltage, which occurs when an AC signal is transmitted through an electronic system.
+In this design, these extra details are removed through the use of a DC voltage supply.
  
- In this design, these extra details are removed through the use of a DC voltage supply.
- 
- The benefit of using AC electricity is that an AC voltage can be much more efficiently amplified compared with a DC voltage source. However, we are working with a small electronic system over a very small distance range, and therefore do not require an AC supply.
+The benefit of using AC electricity is that an AC voltage can be much more efficiently amplified compared with a DC voltage source. However, we are working with a small electronic system over a very small distance range, and therefore do not require an AC supply.
 
 
 ### How does the transistor act like a switch, and why is it useful?
 [switch](https://www.quora.com/Why-do-we-use-transistor-as-a-switch){:target="_blank"}
+[switch2]: https://www.electronics-tutorials.ws/transistor/tran_4.html
 
-Everything that a transistor can do is entirely possible to achieve with other components. The transistor has the advantage of being able to do the same things quicker, while being smaller in size, enabling more computation, with lower power - like we see today's in computers - and this can all be achieved at a much higher precision than if we did than mechanically.
+Everything that a transistor can do - namely voltage amplification and switching - is entirely possible to achieve with other components. The transistor has the advantage of being able to do the same things quicker, while being smaller in size, enabling more computation, with lower power - like we see in today's computers - and this can all be achieved at a much higher precision than if we did the same task mechanically.
 
-#### So, how can we use a transistor as a switch?
+The transistor we use in this design is the [BC548 transistor][fairchild], manufactured by Fairchild Semiconductor International.
 
-The transistor we use in this desin is the [BC548 transistor][fairchild], manufactured by Fairchild Semiconductor International.
+It is an NPN transistor, and is made from semiconductor material.
 
-It is an NPN transistor. 
+#### What is a semiconductor?
+A semiconductor is a material whose chemical composition is such that it has an [electrical conductivity][conductivity] that is between the range of an insulator such as hard rubber (10^-14 S/m), and a conductor such as copper (~5.96x10^7 S/m).
+
+So how do metals and semiconductors difference structurally on a molecular scale? First, you can visualise a metal as a lattice of bonded metallic cations (positively charged ions), surrounded by a sea of electrons. A semiconductor can again be visualise like a lattice of atoms, but this time a proportion of these atoms either hold one less or one more electron in their atomic structure.
+
+With a sufficient potential difference across a semiconductor, electrons will jump between atoms in the semiconductor, filling the empty spaces, exhibiting conductive properties.
+
+[Boron-doped]: http://iamtechnical.com/silicon-lattice-doping-silicon-boron-phosporous
+[metallic-structure]: https://www.slideshare.net/ulcerd/chemical-structure-chemical-bonding-ionic-metallic-coordinate-bonds
+
+#### What is NPN?
+
+
 
 [How-a-Semiconductor-works-BenEater]: https://www.youtube.com/watch?v=33vbFFFn04k
 [How-a-Transistor-works-BenEater]: https://www.youtube.com/watch?v=DXvAlwMAxiA
+[hyperPhysics]: http://hyperphysics.phy-astr.gsu.edu/hbase/Solids/dope.html
+
+[semi-conductor_MOS]: https://physics.info/semiconductors/
+
+[pn-junction]: https://en.wikipedia.org/wiki/P%E2%80%93n_junction
 
 {:refdef: style="text-align: center;"}
 ![NPN-Explained](https://al2050.github.io/personal-website/assets/NPN.jpg)
 {:refdef}
 
 
-## Modeling the NAND-Gate circuit
 
+
+## Modeling the NAND-Gate circuit
 {:refdef: style="text-align: center;"}
 [BC548-Datasheet](https://al2050.github.io/personal-website/assets/BC548.pdf){:target="_blank"}
 {:refdef}
@@ -140,8 +170,8 @@ It is an NPN transistor.
 Figure #: 
 {: refdef}
 
-## Building the NAND-Gate circuit on a Bread-Board
 
+## Building the NAND-Gate circuit on a Bread-Board
 {:refdef: style="text-align: center;"}
 ![Physical-NAND-Gate-Circuit](https://al2050.github.io/personal-website/assets/NAND_Gate_Circuit.jpg)
 {:refdef}
@@ -160,6 +190,12 @@ Figure #:
 
 [boolean]: https://www.lotame.com/what-is-boolean-logic/
 
+[nand]: https://en.wikipedia.org/wiki/NAND_gate
+
+[not]: https://en.wikipedia.org/wiki/Inverter_(logic_gate)
+
+[truthTable]: https://medium.com/i-math/intro-to-truth-tables-boolean-algebra-73b331dd9b94
+
 [Transceiver]: https://en.wikipedia.org/wiki/Transceiver
 
 [Potentiometer]: https://www.quora.com/What-is-transferring-resistance-in-reference-to-a-transistor
@@ -170,7 +206,9 @@ Figure #:
 [fairchild]: https://www.onsemi.com/products/discretes-drivers/general-purpose-and-low-vcesat-transistors/bc548
 
 
+[ADC]: https://en.wikipedia.org/wiki/Analog-to-digital_converter#Resolution
 
+[conductivity]: https://www.thoughtco.com/table-of-electrical-resistivity-conductivity-608499
 
 
 <!--
