@@ -77,36 +77,10 @@ Figure 4: *A table such as this one is called a [truth table][truthTable]{:targe
 
 The physical NAND-Gate designed in this project, is a Resistor-Transistor logic (RTL) configuration, using transistors as switches and resistors to regulate voltage and current levels at point in the circuit to agree with the requirements of the two transistors - our inputs - and Light-Emitting Diode (LED) - our output.
 
-Since we are working with a purely DC voltage source, the complexity of the physical system is greatly reduced. We need not worry about parasitic capacitances, transconductance or similar. Also, we are using the transistors as switches, therefore we are not necessarily concerned about performance, as we would if we were designing a voltage amplifier, where precision is essential, or working with high-speed compute, where rapid transistor switching is required.
-
-Before we delve into the specifics of the design, let's first delve into the transistor's internal to gain a deeper understanding into how it is able to behave as a switch, to enable use to create a system that operates under Boolean logic.
-
-## Transistor Internals 101 - A Small but Mighty Device
-{:refdef: style="text-align: center;"}
-![smallButMighty](https://al2050.github.io/personal-website/assets/smallButMighty.jpg)
-{:refdef}
-
-{:refdef: style="text-align: center;"}
-Figure 5: *Reference https://www.teepublic.com/t-shirt/1774269-superman-letter-t*
-{:refdef}
-
-
-The transistor is well known for being the catalyst of the [Information Age][Information-Age]{:target="_blank"}. It's most common use is as an electronic switch in today's computers, a small but mighty switch that can toggle at exceptionally high rates, while being manufactured at a size, on the low-end of the nano-scale.
-
-The two applications for the transistor.
-
-| Function | Application |
-| ---- | ---- |
-| As a switch | Automated switching, at high toggle rates, makes this very useful in, for example, the control of a DC motor, [high-power conversion efficiency](https://en.wikipedia.org/wiki/Switched-mode_power_supply){:target="_blank"} and high switch speeds in low-power components, such as logic gates, which we are looking at in this article. |
-| ---- | ---- |
-| As voltage amplifier | Very useful in communications (think of the [transceiver][Transceiver]{:target="_blank"}). |
-
-
-### What's inside a transistor?
-The name transistor is a portmanteau of the words *transfer* and *resistor*, so transistor etymologically means *transfer resistor*. Resistance isn't physically transferred by a transistor, but, due to the transistor's physical properties, there is a relative difference between the input resistance and the output resistance.
-
 
 #### A brief note on AC-driven electronic systems
+Since we are working with a purely DC voltage source, the complexity of the physical system is greatly reduced. We need not worry about parasitic capacitances, transconductance or similar. Also, we are using the transistors as switches, therefore we are not necessarily concerned about performance, as we would if we were designing a voltage amplifier, where precision is essential, or working with high-speed compute, where rapid transistor switching is required.
+
 When dealing with AC electricity, we would refer to the resistance in terms of what is called impedence. Impedence is the effective resistance resulting in an AC-driven environment. 
  
 Impedence is mathematically represented as a vector, containing magnitude, which is the resistance caused by the DC offset in the electronic system, and a phase, known as the reactance. 
@@ -117,28 +91,52 @@ In this design, these extra details are removed through the use of a DC voltage 
  
 The benefit of using AC electricity is that an AC voltage can be much more efficiently amplified compared with a DC voltage source. However, we are working with a small electronic system over a very small distance range, and therefore do not require an AC supply.
 
+Before we delve into the specifics of the design, let's first delve into the transistor's internal to gain a deeper understanding into how it is able to behave as a switch, to enable use to create a system that operates under Boolean logic.
 
-### How does the transistor act like a switch, and why is it useful?
-[switch](https://www.quora.com/Why-do-we-use-transistor-as-a-switch){:target="_blank"}
-[switch2]: https://www.electronics-tutorials.ws/transistor/tran_4.html
+## Transistor Internals 101 - <sup><sub><sup><sub><sup><sub>Small</sub></sup></sub></sup></sub></sup> but **MIGHTY**!
+{:refdef: style="text-align: center;"}
+![smallButMighty](https://al2050.github.io/personal-website/assets/smallButMighty.jpg)
+{:refdef}
 
-Everything that a transistor can do - namely voltage amplification and switching - is entirely possible to achieve with other components. The transistor has the advantage of being able to do the same things quicker, while being smaller in size, enabling more computation, with lower power - like we see in today's computers - and this can all be achieved at a much higher precision than if we did the same task mechanically.
+{:refdef: style="text-align: center;"}
+Figure 5: *[Source](https://www.teepublic.com/t-shirt/1774269-superman-letter-t){:target="_blank"}*
+{:refdef}
 
-The transistor we use in this design is the [BC548 transistor][fairchild], manufactured by Fairchild Semiconductor International.
 
-It is an NPN transistor, and is made from semiconductor material.
+The transistor is well known for being the catalyst of the [Information Age][Information-Age]{:target="_blank"}. It's most common use is as an electronic switch in today's computers, a small but mighty switch that can toggle at exceptionally high rates, while being manufactured at a size, on the low-end of the nano-scale.
 
-#### What is a semiconductor?
+There are two sole applications for the transistor.
+
+| Function | Application |
+| ---- | ---- |
+| As a switch | Automated switching, at high toggle rates, makes this very useful in, for example, the control of a DC motor, [high-power conversion efficiency][highPower]{:target="_blank"} and high switch speeds in low-power components, such as logic gates, which we are looking at in this article. [Here is an interesting discussion on what affects the switching rates of transistors][switchingSpeed]{:target="_blank"}. |
+| ---- | ---- |
+| As voltage amplifier | Very useful in communications for amplifying signals for transmission (think of the [transceiver][Transceiver]{:target="_blank"}, and in today's communications, [optoelectrical systems][optoElectrical]{:target="_blank"}). |
+
+### Types of Transistor
+Several transistor designs have emerged since its physical invention in 1947. [Here is a useful link on the different types of transistor][transistorTypes]{:target="_blank"}.  [MOSFET][mosfet]{:target="_blank"} transistors are currently the most widely used, and are the most commonly used type in microprocessors to date.
+
+The NAND-gate circuit built in this article uses the [BC548 Bipolar-Junction Transistor][BC548-Datasheet]{:target="_blank"}.
+
+
+### The material that makes the transistor a possibility in this Universe
 A semiconductor is a material whose chemical composition is such that it has an [electrical conductivity][conductivity] that is between the range of an insulator such as hard rubber (10^-14 S/m), and a conductor such as copper (~5.96x10^7 S/m).
 
-So how do metals and semiconductors difference structurally on a molecular scale? First, you can visualise a metal as a lattice of bonded metallic cations (positively charged ions), surrounded by a sea of electrons. A semiconductor can again be visualise like a lattice of atoms, but this time a proportion of these atoms either hold one less or one more electron in their atomic structure.
+So how do metals and semiconductors differ structurally on a molecular scale? First, you can visualise a metal as a lattice of bonded metallic cations (positively charged ions), surrounded by a sea of electrons. A semiconductor can also be visualised as a lattice of atoms, but this time with bound electrons and a proportion of these atoms either hold one less or one more electron in their atomic structure, leaving a gap in their regular arrangement. These gaps are known as holes, and are regarded as having a positive electric charge, opposite to that of the electron.
 
-With a sufficient potential difference across a semiconductor, electrons will jump between atoms in the semiconductor, filling the empty spaces, exhibiting conductive properties.
+With a sufficient potential difference across a semiconductor, electrons will jump between atoms by occupying these holes, enabling a flow of current through the material and exhibiting conductive properties. There is a threshold voltage that must be met to provide the electrons with enough impetus to enable to jumps between these holes, leading to a flow of current.
 
 [Boron-doped]: http://iamtechnical.com/silicon-lattice-doping-silicon-boron-phosporous
 [metallic-structure]: https://www.slideshare.net/ulcerd/chemical-structure-chemical-bonding-ionic-metallic-coordinate-bonds
 
-#### What is NPN?
+### The **NP** junction
+An N-type semiconductor material has a dominance of electrons in its structure, while a P-type material has a dominance of holes in its structure.
+
+Imagine a segment of N-Type and a segment of P-Type seamlessly connected like so:
+
+{:refdef: style="text-align: center;"}
+![NPN-Explained](https://al2050.github.io/personal-website/assets/NP_junction.jpg)
+{:refdef}
 
 
 
@@ -150,17 +148,33 @@ With a sufficient potential difference across a semiconductor, electrons will ju
 
 [pn-junction]: https://en.wikipedia.org/wiki/P%E2%80%93n_junction
 
+<!--
 {:refdef: style="text-align: center;"}
 ![NPN-Explained](https://al2050.github.io/personal-website/assets/NPN.jpg)
 {:refdef}
+-->
 
+### How does the transistor act like a switch, and why is it useful?
+[switch](https://www.quora.com/Why-do-we-use-transistor-as-a-switch){:target="_blank"}
+[switch2]: https://www.electronics-tutorials.ws/transistor/tran_4.html
+
+The *bipolar* term in BJT means that there are two polarised regions in the transistor. The BJT is equivalent to two diodes, that are in series in either a back-to-back or a face-to-face arrangement. [Here is a comprehensive article covering the theory behind the diode][diodeTheory].
+
+The BC548 transistor is an NPN transistor. What this means is that 
+
+
+
+The name transistor is a portmanteau of the words *transfer* and *resistor*, so transistor etymologically means *transfer resistor*. Resistance isn't physically transferred by a transistor, but, due to the transistor's physical properties, there is a relative difference between the input resistance and the output resistance.
+
+Everything that a transistor can do - namely voltage amplification and switching - is entirely possible to achieve with other components. The transistor has the advantage of being able to do the same things quicker, while being smaller in size, enabling more computation, with lower power - like we see in today's computers - and this can all be achieved at a much higher precision than if we did the same task mechanically.
+
+The transistor we use in this design is the [BC548 transistor][fairchild], manufactured by Fairchild Semiconductor International.
+
+It is an NPN transistor, and is made from semiconductor material.
 
 
 
 ## Modeling the NAND-Gate circuit
-{:refdef: style="text-align: center;"}
-[BC548-Datasheet](https://al2050.github.io/personal-website/assets/BC548.pdf){:target="_blank"}
-{:refdef}
 
 {:refdef: style="text-align: center;"}
 ![NAND Gate Circuit Model in Multisim](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit-Model.JPG)
@@ -196,12 +210,30 @@ Figure #:
 
 [truthTable]: https://medium.com/i-math/intro-to-truth-tables-boolean-algebra-73b331dd9b94
 
+[highPower]: https://en.wikipedia.org/wiki/Switched-mode_power_supply
+
+[switchingSpeed]: https://www.quora.com/Which-factor-affect-switching-speed-of-transistor
+
 [Transceiver]: https://en.wikipedia.org/wiki/Transceiver
+
+[optoElectrical]: https://en.wikipedia.org/wiki/Heterojunction_bipolar_transistor#Limits
 
 [Potentiometer]: https://www.quora.com/What-is-transferring-resistance-in-reference-to-a-transistor
 
 
 [Information-Age]: https://en.wikipedia.org/wiki/Information_Age#Innovations
+
+[transistorTypes]: https://www.elprocus.com/different-types-of-transistor-and-their-functions/
+
+[mosfet]: https://www.elprocus.com/mosfet-as-a-switch-circuit-diagram-free-circuits/
+
+
+
+[BC548-Datasheet]: https://al2050.github.io/personal-website/assets/BC548.pdf
+
+
+[diodeTheory]: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-3/introduction-to-diodes-and-rectifiers/
+
 
 [fairchild]: https://www.onsemi.com/products/discretes-drivers/general-purpose-and-low-vcesat-transistors/bc548
 
