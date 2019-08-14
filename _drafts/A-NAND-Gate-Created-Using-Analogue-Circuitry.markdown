@@ -138,10 +138,20 @@ Imagine a segment of N-Type and a segment of P-Type seamlessly connected like so
 ![NP-Junction](https://al2050.github.io/personal-website/assets/NP_junction.jpg)
 {:refdef}
 
+Opposite charges attract and like charges repel. Therefore, if we place a voltage source like so:
 
 
+{:refdef: style="text-align: center;"}
+![NP-Junction](https://al2050.github.io/personal-website/assets/NP_forwardBias.jpg)
+{:refdef}
 
+{:refdef: style="text-align: center;"}
+![NP-Junction](https://al2050.github.io/personal-website/assets/NP_reverseBias.jpg)
+{:refdef}
 
+{:refdef: style="text-align: center;"}
+![NP-Junction](https://al2050.github.io/personal-website/assets/NP_deplete.jpg)
+{:refdef}
 
 <!--
 [How-a-Semiconductor-works-BenEater]: https://www.youtube.com/watch?v=33vbFFFn04k
