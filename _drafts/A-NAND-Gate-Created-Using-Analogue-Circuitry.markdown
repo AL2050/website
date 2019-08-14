@@ -144,7 +144,15 @@ Opposite charges attract and like charges repel. Therefore, if we place a voltag
 ![NP-ForwardBias](https://al2050.github.io/personal-website/assets/NP_forwardBias.jpg)
 {:refdef}
 
-Then provided we have a sufficient voltage across our NP-junction, a current will flow. This circuit is the equivalent of a diode in the forward bias configuration. The threshold voltage for a diode is typically in the region of [0.6, 0.7] V
+Then provided we have a sufficient voltage across our NP-junction, a conventional current will flow in the anti-clockwise direction. Conventional current is a standard that refers to current as flowing from positive to negative. This is the opposite the the flow of electrons which is from negative to positive. In the proceeding sections we will be refering to conventional current.
+
+|Type|Direction|
+|----|----|
+|Conventional current|**+** to **-**|
+|----|----|
+|Flow of electrons|**-** to **+**|
+
+This circuit is the equivalent of a diode in the forward bias configuration. The threshold voltage for a diode is typically in the region of [0.6, 0.7] V
 
 {:refdef: style="text-align: center;"}
 ![NP-ReverseBias](https://al2050.github.io/personal-website/assets/NP_reverseBias.jpg)
@@ -199,7 +207,17 @@ Let's apply a voltage across the NPN sandwich like we did with the NP-segment ab
 ![1-BJT](https://al2050.github.io/personal-website/assets/1bjt.jpg)
 {:refdef}
 
+The resistor, R<sub>c</sub>, is our controller for the flow of conventional current being fed downwards, into the upper N-Type segment of our NPN sandwich. Different BJT components have different current ranges that they can safely operate with. To determine these ranges, engineers refer to [datasheets][BC548-Datasheet]{:target="_blank"}.
 
+Applying a conventional current to the upper N-Type segment, we will find that minimal if any current flows downwards due to there being a minimal potential difference between V<sub>cc</sub> and the P-Type segment. In order for the conventional current to flow, we must apply a sufficient conventional current to the B line, known as the Base of the transistor.
+
+V<sub>cc</sub> is the most positive region, while the ground, at the bottom, is the most negative region.
+
+By applying a conventional current to the Base, we are in theory adding holes to the P-Type material. 
+
+{:refdef: style="text-align: center;"}
+![2-switches](https://al2050.github.io/personal-website/assets/twoSwitches.jpg)
+{:refdef}
 
 ### How does the transistor act like a switch, and why is it useful?
 [switch](https://www.quora.com/Why-do-we-use-transistor-as-a-switch){:target="_blank"}
