@@ -138,20 +138,23 @@ Imagine a segment of N-Type and a segment of P-Type seamlessly connected like so
 ![NP-Junction](https://al2050.github.io/personal-website/assets/NP_junction.jpg)
 {:refdef}
 
-Opposite charges attract and like charges repel. Therefore, if we place a voltage source like so:
-
+Opposite charges attract and like charges repel. Therefore, if we place a voltage source across the NP-junction like so:
 
 {:refdef: style="text-align: center;"}
 ![NP-ForwardBias](https://al2050.github.io/personal-website/assets/NP_forwardBias.jpg)
 {:refdef}
 
-Then provided we have a sufficient voltage across our NP-junction, a current will flow. This circuit is the equivalent of a diode in the forward bias configuration.
+Then provided we have a sufficient voltage across our NP-junction, a current will flow. This circuit is the equivalent of a diode in the forward bias configuration. The threshold voltage for a diode is typically in the region of [0.6, 0.7] V
 
 {:refdef: style="text-align: center;"}
 ![NP-ReverseBias](https://al2050.github.io/personal-website/assets/NP_reverseBias.jpg)
 {:refdef}
 
-Here is the diode in reverse bias. In this configuration, the boundary between the N-Type and P-Type materials...
+With the diode in reverse bias, something interesting happens. Observing the arragement below, electrons will be flowing in the clockwise direction. Therefore, electrons will be driven towards the N-Type material, while holes while flow towards the P-Type material.
+
+At the interface between the two semiconductor regions, a cloud of holes and electrons forms, as electrons from the left side are forced into the P-Type holes, and holes from the right side are forced to form in the N-Type material. This cloud of holes and electrons shaded in the diagram, is known as the depletion region, and is the breakdown of both semiconductor devices.
+
+When this breakdown takes place, the diode will heat up. Depending on the voltage applied across the diode in reverse bias, the diode may explode due to the rate of depletion, resulting in rapid heating and expansion.
 
 {:refdef: style="text-align: center;"}
 ![NP-Deplete](https://al2050.github.io/personal-website/assets/NP_deplete.jpg)
@@ -172,6 +175,17 @@ Here is the diode in reverse bias. In this configuration, the boundary between t
 ![NPN-Explained](https://al2050.github.io/personal-website/assets/NPN.jpg)
 {:refdef}
 -->
+
+
+### The NPN sandwich - Back-To-Back diodes
+This brings us onto the internals of the transistor.
+
+Take our NP junction from the last section, and now sandwich the P-Type region with a second N-Type segment. This is the equivalent of two back-to-back diodes. Each segment of the NPN sandwich are controlled by a terminal like so:
+
+{:refdef: style="text-align: center;"}
+![NP-Deplete](https://al2050.github.io/personal-website/assets/npnbjt.jpg)
+{:refdef}
+
 
 ### How does the transistor act like a switch, and why is it useful?
 [switch](https://www.quora.com/Why-do-we-use-transistor-as-a-switch){:target="_blank"}
