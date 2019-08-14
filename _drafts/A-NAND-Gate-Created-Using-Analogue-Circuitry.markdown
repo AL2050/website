@@ -213,11 +213,13 @@ Applying a conventional current to the upper N-Type segment, we will find that m
 
 V<sub>cc</sub> is the most positive region, while the ground, at the bottom, is the most negative region.
 
-By applying a conventional current to the Base, we are in theory adding holes to the P-Type material. 
-
 {:refdef: style="text-align: center;"}
 ![2-switches](https://al2050.github.io/personal-website/assets/twoSwitches.jpg)
 {:refdef}
+
+By applying a conventional current to the Base, we are in theory adding holes to the P-Type segment. This increases the positive potential of the P-Type region, enticing negative electrons to fill the holes in the P-Type region, from the N-Type region above. This is kind of like building up electrical momentum in the downwards direction, and is equivalent to closing a manual electrical switch.
+
+Characteristically, only a small base current is required to achieve a significantly larger current through the NPN composite. Generally, the P-Type region is small than either of the N-Type regions, but large enough to enable sub-atomic particles to gain enough momentum to pass through the NPN composite.
 
 ### How does the transistor act like a switch, and why is it useful?
 [switch](https://www.quora.com/Why-do-we-use-transistor-as-a-switch){:target="_blank"}
