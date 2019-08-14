@@ -180,11 +180,25 @@ When this breakdown takes place, the diode will heat up. Depending on the voltag
 ### The NPN sandwich - Back-To-Back diodes
 This brings us onto the internals of the transistor.
 
-Take our NP junction from the last section, and now sandwich the P-Type region with a second N-Type segment. This is the equivalent of two back-to-back diodes. Each segment of the NPN sandwich are controlled by a terminal like so:
+Take our NP segment from the last section, and now sandwich the P-Type segment with a second N-Type segment. This is the equivalent of two back-to-back diodes. 
+
+{:refdef: style="text-align: center;"}
+![NPN-BJT](https://al2050.github.io/personal-website/assets/b2b_diodes.jpg)
+{:refdef}
+
+Each segment of the NPN sandwich are controlled by a terminal like so:
 
 {:refdef: style="text-align: center;"}
 ![NPN-BJT](https://al2050.github.io/personal-website/assets/npnbjt.jpg)
 {:refdef}
+
+#### Why make the sandwich?
+Let's apply a voltage across the NPN sandwich like we did with the NP-segment above.
+
+{:refdef: style="text-align: center;"}
+![1-BJT](https://al2050.github.io/personal-website/assets/1bjt.jpg)
+{:refdef}
+
 
 
 ### How does the transistor act like a switch, and why is it useful?
