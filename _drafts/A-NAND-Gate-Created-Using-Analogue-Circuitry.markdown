@@ -142,15 +142,19 @@ Opposite charges attract and like charges repel. Therefore, if we place a voltag
 
 
 {:refdef: style="text-align: center;"}
-![NP-Junction](https://al2050.github.io/personal-website/assets/NP_forwardBias.jpg)
+![NP-ForwardBias](https://al2050.github.io/personal-website/assets/NP_forwardBias.jpg)
 {:refdef}
 
-{:refdef: style="text-align: center;"}
-![NP-Junction](https://al2050.github.io/personal-website/assets/NP_reverseBias.jpg)
-{:refdef}
+Then provided we have a sufficient voltage across our NP-junction, a current will flow. This circuit is the equivalent of a diode in the forward bias configuration.
 
 {:refdef: style="text-align: center;"}
-![NP-Junction](https://al2050.github.io/personal-website/assets/NP_deplete.jpg)
+![NP-ReverseBias](https://al2050.github.io/personal-website/assets/NP_reverseBias.jpg)
+{:refdef}
+
+Here is the diode in reverse bias. In this configuration, the boundary between the N-Type and P-Type materials...
+
+{:refdef: style="text-align: center;"}
+![NP-Deplete](https://al2050.github.io/personal-website/assets/NP_deplete.jpg)
 {:refdef}
 
 <!--
