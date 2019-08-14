@@ -227,11 +227,17 @@ Everything that a transistor can do - namely voltage amplification and switching
 
 
 ## Modeling the NAND-Gate circuit
+So now that we understand how a BJT can behave like an electronic switch, let's now device a model for our logical NAND-gate circuit.
+
 {:refdef: style="text-align: center;"}
 ![2-switches](https://al2050.github.io/personal-website/assets/twoSwitches.jpg)
 {:refdef}
 
+{:refdef: style="text-align: center;"}
+Figure #: The red circles represent holes, while the green dashes represent electrons. Two BJTs are connected in series.
+{:refdef}
 
+The design in this article is for a 2-input 1-output NAND-gate. Therefore, we require two switches for the inputs to represent the HIGH/ON and LOW/OFF states. In order to control our transistor switches, we must supply their Base terminals with a current source. The way we do this here is by connecting the Base terminals to their own resistors of which are connected to the supply voltage.
 
 {:refdef: style="text-align: center;"}
 ![NAND Gate Circuit Model in Multisim](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit-Model.JPG)
@@ -240,6 +246,27 @@ Everything that a transistor can do - namely voltage amplification and switching
 {:refdef: style="text-align: center;"}
 Figure #: 
 {: refdef}
+
+
+
+
+{:refdef: style="text-align: center;"}
+![zerozero](https://al2050.github.io/personal-website/assets/zerozero.jpg)
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+![zeroone](https://al2050.github.io/personal-website/assets/zeroone.jpg)
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+![onezero](https://al2050.github.io/personal-website/assets/onezero.jpg)
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+![oneone](https://al2050.github.io/personal-website/assets/oneone.jpg)
+{:refdef}
+
+
 
 
 ## Building the NAND-Gate circuit on a Bread-Board
