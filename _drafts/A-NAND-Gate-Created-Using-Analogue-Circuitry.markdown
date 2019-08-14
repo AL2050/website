@@ -135,7 +135,7 @@ An N-type semiconductor material has a dominance of electrons in its structure, 
 Imagine a segment of N-Type and a segment of P-Type seamlessly connected like so:
 
 {:refdef: style="text-align: center;"}
-![NPN-Explained](https://al2050.github.io/personal-website/assets/NP_junction.jpg)
+![NP-Junction](https://al2050.github.io/personal-website/assets/NP_junction.jpg)
 {:refdef}
 
 
