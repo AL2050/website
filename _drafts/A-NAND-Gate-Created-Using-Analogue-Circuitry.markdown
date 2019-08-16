@@ -27,7 +27,7 @@ The conversion of a continuous signal to a digital signal is typically achieved 
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 1: *You can imagine a continuous signal as being perfectly smooth. There are no steps or jumps throughout its transmission.* 
+Figure #: *You can imagine a continuous signal as being perfectly smooth. There are no steps or jumps throughout its transmission.* 
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -35,7 +35,7 @@ Figure 1: *You can imagine a continuous signal as being perfectly smooth. There 
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 2: *The <span style="color:red">**red line**</span> represents the discrete signal that would be produced, by discretising this signal, in this instance. As you can see, this discrete signal consists of discrete steps. The <span style="color:red">**red line**</span> is the ideal scenario, where the time to transition between states is zero. In reality, a discretised signal would have ramps at the rising and falling edges between discrete states, since it takes a small amount of time to transition from one state to another. The conversion of the **black** signal into the <span style="color:red">**red**</span> signal is achieved through the use of a device called an [Analog-to-Digital Converter][ADC]{:target="_blank"}, to quantise the wave at specific step values*.
+Figure #: *The <span style="color:red">**red line**</span> represents the discrete signal that would be produced, by discretising this signal, in this instance. As you can see, this discrete signal consists of discrete steps. The <span style="color:red">**red line**</span> is the ideal scenario, where the time to transition between states is zero. In reality, a discretised signal would have ramps at the rising and falling edges between discrete states, since it takes a small amount of time to transition from one state to another. The conversion of the **black** signal into the <span style="color:red">**red**</span> signal is achieved through the use of a device called an [Analog-to-Digital Converter][ADC]{:target="_blank"}, to quantise the wave at specific step values*.
 {:refdef}
 
 
@@ -66,7 +66,7 @@ The significance of digital circuitry motivated me to design and build an analog
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 3: *Imagine we have a black box, containing the necessary circuitry to represent a logic gate that obeys Boolean AND logic. There are two or more inputs and a single output. For the output to trigger HIGH/ON, all inputs must also be HIGH/ON. If any input is LOW/OFF, the output will also be LOW/OFF. The inverse conditions are true for a [NAND][nand]{:target="_blank"} gate, or a NOT-AND gate, where [NOT][not]{:target="_blank"} outputs the inverse of the corresponding input.*
+Figure #: *Imagine we have a black box, containing the necessary circuitry to represent a logic gate that obeys Boolean AND logic. There are two or more inputs and a single output. For the output to trigger HIGH/ON, all inputs must also be HIGH/ON. If any input is LOW/OFF, the output will also be LOW/OFF. The inverse conditions are true for a [NAND][nand]{:target="_blank"} gate, or a NOT-AND gate, where [NOT][not]{:target="_blank"} outputs the inverse of the corresponding input.*
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -74,7 +74,7 @@ Figure 3: *Imagine we have a black box, containing the necessary circuitry to re
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 4: *A table such as this one is called a [truth table][truthTable]{:target="_blank"}. A mathematical logic table relating the inputs to a logical system with the output. This is the truth table for a general NAND gate.*
+Figure #: *A table such as this one is called a [truth table][truthTable]{:target="_blank"}. A mathematical logic table relating the inputs to a logical system with the output. This is the truth table for a general NAND gate.*
 {:refdef}
 
 The physical NAND-Gate designed in this project, is a Resistor-Transistor logic (RTL) configuration, using transistors as switches and resistors to regulate voltage and current levels at points in the circuit, to agree with the electronic requirements of the two transistors - our inputs - and Light-Emitting Diode (LED) - our output.
@@ -101,7 +101,7 @@ Before we delve into the specifics of the NAND-gate design, let's first explore 
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 5: *[Source](https://www.teepublic.com/t-shirt/1774269-superman-letter-t){:target="_blank"}*
+Figure #: *[Source](https://www.teepublic.com/t-shirt/1774269-superman-letter-t){:target="_blank"}*
 {:refdef}
 
 The name transistor is a portmanteau of the words *transfer* and *resistor*, so transistor etymologically means *transfer resistor*. Resistance isn't physically transferred by a transistor, but, due to the transistor's physical properties, there is a relative difference between the input resistance and the output resistance. The is due to the physical make-up of a transistor, and is what enables the transistor to amplify voltages. We will explore this make-up shortly.
@@ -238,6 +238,7 @@ The <span style="color:red">**red circles**</span> represent holes, while the <s
 |Emitter|E|
 |----|----|
 
+The design in this article is for a 2-input 1-output NAND-gate. Therefore, we require two switches for the inputs to represent the HIGH/ON and LOW/OFF states. In order to control our transistor switches, we must supply their Base terminals with a current source. The way we do this here is by connecting the Base terminals to their own resistors of which are connected to the supply voltage.
 
 {:refdef: style="text-align: center;"}
 ![zerozero](https://al2050.github.io/personal-website/assets/zerozero.jpg)
@@ -245,7 +246,7 @@ The <span style="color:red">**red circles**</span> represent holes, while the <s
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: *Imagine that each part of this design is contained in a set of black boxes. We are familiar with the NPN transistors shown. V<sub>cc</sub> can be visualised as a box of <span style="color:red">**holes**</span>, and ground as a box of <span style="color:green">**electrons**</span>. We are going to be connecting the base terminals of both transistors to V<sub>cc</sub>, seperated by current controlling resistors. Therefore, we connect each base with a box containing holes.* The labels **ON** and **OFF** indicate whether or not we are supplying holes to the base of either transistor.
+Figure #: *Imagine that each part of this design is contained in a set of black boxes. We are familiar with the NPN transistors shown. V<sub>cc</sub> can be visualised as a box of <span style="color:red">**holes**</span>, and ground as a box of <span style="color:green">**electrons**</span>. We are going to be connecting the base terminals of both transistors to V<sub>cc</sub>, seperated by current controlling resistors. Therefore, we connect each base with a box containing holes.* The labels **ON** and **OFF** indicate whether or not we are supplying holes to the base of either transistor. This is the first of four possible logic states. We are supplying neither base of our transistors with a conventional current, therefore no current flows through either NPN transistor.
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -254,7 +255,7 @@ Figure #: *Imagine that each part of this design is contained in a set of black 
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: 
+Figure #: In this state, the upper NPN transistor is switched on, the switch is effectively closed. Current is supplied to its base, polarising the NPN transistor, by making the lower N-Type segment more positive. Therefore, conventional current passess successfully through the upper NPN transistor. However, no current is being supplied to the base of the lower NPN transistor. Therefore, its lower N-Type segment unchanged. The conventional current from the upper transistor adds holes to the lower transistor's upper N-Type segment, however, this does not add to the downward electrical momentum we require to make the lower transistor a closed switch.
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -263,7 +264,7 @@ Figure #:
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: 
+Figure #: In this state, we are supplying the base of the lower NPN transistor with a conventional current. Since the upper transistor is an open switch, it is almost like have a ground at both N-Type segments of the lower NPN transistor. Therefore, there is no net downward conventional current.
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -272,66 +273,67 @@ Figure #:
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: 
+Figure #: In this final state, both NPN transistors are closed, switches. Both are receiving a conventional current to their base terminals. Polarisation takes place in both transistors, and an overall downward conventional current results. 
 {:refdef}
 
-|Upper BJT Input|Lower BJT Input|Output Logic|
-|----|----|
-|||
 
-The design in this article is for a 2-input 1-output NAND-gate. Therefore, we require two switches for the inputs to represent the HIGH/ON and LOW/OFF states. In order to control our transistor switches, we must supply their Base terminals with a current source. The way we do this here is by connecting the Base terminals to their own resistors of which are connected to the supply voltage.
+Now to complete our design, we add in our current controlling resistors between our supply voltage and the switches to the base of each transistor, and finally, connect an LED in parallel with the two transistors in series to display the logical output when testing.
 
 {:refdef: style="text-align: center;"}
 ![NAND Gate Circuit Model in Multisim](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit-Model.JPG)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: 
+Figure #: *An NI Multisim schematic of the final BJT NAND-Gate design. Notice that the LED has been connected from the R<sub>c</sub> transistor to ground. If we connected the transistor in series below to lower transistor, we would have an AND-Gate.*
 {: refdef}
 
 
+|Design Process Followed|
+|----|
+|Theory|
+|----| 
+|Modeling the Circuit with different designs possibilities on a White-Board from fist principles|
+|----|
+|NI Multisim model with simulations to optimise design (Unit testing)|
+|----|
+|Physical build of circuit and Test (Testing circuit in stages at each stage of the build process) - what are the sub-systems of the circuit?|
 
+<u>The logical output seen with the LED:</u>
+
+|Lower BJT Input|Upper BJT Input|LED Output|
+|----|----|----|
+|OFF|OFF|ON|
+|----|----|----|
+|OFF|ON|OFF|
+|----|----|----|
+|ON|OFF|OFF|
+|----|----|----|
+|ON|ON|OFF|
+
+
+
+## Before the final design
 
 {:refdef: style="text-align: center;"}
-![zerozero](https://al2050.github.io/personal-website/assets/zerozero.jpg)
+![Pre-optimised-design](https://al2050.github.io/personal-website/assets/pre-optimised-design.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: 
-{: refdef}
-
-{:refdef: style="text-align: center;"}
-![zeroone](https://al2050.github.io/personal-website/assets/zeroone.jpg)
+Figure #: *Here is a whiteboard working, before optimising the design to its final form.*
 {:refdef}
 
-{:refdef: style="text-align: center;"}
-Figure #: 
-{: refdef}
 
-{:refdef: style="text-align: center;"}
-![onezero](https://al2050.github.io/personal-website/assets/onezero.jpg)
-{:refdef}
-
-{:refdef: style="text-align: center;"}
-Figure #: 
-{: refdef}
-
-{:refdef: style="text-align: center;"}
-![oneone](https://al2050.github.io/personal-website/assets/oneone.jpg)
-{:refdef}
-
-{:refdef: style="text-align: center;"}
-Figure #: 
-{: refdef}
-
-
-
-## Building the NAND-Gate circuit on a Bread-Board
+## Physical Breadboard NAND-Gate circuit
 {:refdef: style="text-align: center;"}
 ![Physical-NAND-Gate-Circuit](https://al2050.github.io/personal-website/assets/NAND_Gate_Circuit.jpg)
 {:refdef}
 
+{:refdef: style="text-align: center;"}
+Figure #: *Here is the final physical implementation. The V<sub>cc</sub> supply rail in shown to the right. To control the supply of current to the base of each transistor, a wire is allocated to the base of each transistor, labeled S1 and S2. The resistor pairs in series with these wires sum to 77k ohms each. At the center of this figure you can see a series of eight resistors which sum to 385 ohms, one side connected to V<sub>cc</sub>, and the other side connected to the collector terminal of the right-most transistor. Finally, the green LED is connected in parallel with the transistors. Its cathode between R<sub>c</sub> and the collector or the right-most transistor, and its anode connected straight to ground.*
+{:refdef}
 
+
+<!--
 {:refdef: style="text-align: center;"}
 ![Demonstration-Video](https://www.youtube.com/channel/UCHi9Cyd8CSJhyiRbS8FKXAg/videos?view_as=subscriber)
 {:refdef}
@@ -339,7 +341,7 @@ Figure #:
 {:refdef: style="text-align: center;"}
 Figure #: Video here
 {: refdef}
-
+-->
 
 [NAND-Gate-Design]: https://www.electronics-tutorials.ws/logic/logic_5.html
 
@@ -373,7 +375,6 @@ Figure #: Video here
 [transistorTypes]: https://www.elprocus.com/different-types-of-transistor-and-their-functions/
 
 [mosfet]: https://www.elprocus.com/mosfet-as-a-switch-circuit-diagram-free-circuits/
-
 
 
 [BC548-Datasheet]: https://al2050.github.io/personal-website/assets/BC548.pdf
