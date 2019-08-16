@@ -224,11 +224,11 @@ Let's apply a voltage across our NPN sandwich like we did with the NP-segment ab
 ![1-BJT](https://al2050.github.io/personal-website/assets/1bjt.jpg)
 {:refdef}
 
-The resistor, R<sub>c</sub>, is our controller for the flow of conventional current that will be driven downwards, into the upper N-Type segment of our NPN sandwich. Different BJT components have different allowed current ranges that they can safely operate with. To determine these ranges, engineers refer to [datasheets][BC548-Datasheet]{:target="_blank"}.
-
 {:refdef: style="text-align: center;"}
 Figure 12
 {:refdef}
+
+The resistor, R<sub>c</sub>, is our controller for the flow of conventional current that will be driven downwards, into the upper N-Type segment of our NPN sandwich. Different BJT components have different allowed current ranges that they can safely operate with. To determine these ranges, engineers refer to [datasheets][BC548-Datasheet]{:target="_blank"}.
 
 Applying a supply voltage to the upper N-Type segment, we will find that minimal, if any, conventional current flows downwards due to there being an insufficient amount of holes occupying the lower N-Type segment. 
 
@@ -274,7 +274,7 @@ The design in this article is for a 2-input 1-output NAND-gate. Therefore, we re
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 13: *Imagine that each part of this design is contained in a set of black boxes. We are familiar with the NPN transistors shown. V<sub>cc</sub> can be visualised as a box of <span style="color:red">**holes**</span>, and ground as a box of <span style="color:green">**electrons**</span>. We are going to be connecting the base terminals of both transistors to V<sub>cc</sub>, seperated by current controlling resistors. Therefore, we connect each base with a box containing holes.* The labels **ON** and **OFF** indicate whether or not we are supplying holes to the base of either transistor. This is the first of four possible logic states. We are supplying neither base of our transistors with a conventional current, therefore no current flows through either NPN transistor.
+Figure 13: *Imagine that each part of this design is contained in a set of black boxes. We are familiar with the NPN transistors shown. V<sub>cc</sub> can be visualised as a box of <span style="color:red">**holes**</span>, and ground as a box of <span style="color:green">**electrons**</span>. We are going to be connecting the base terminals of both transistors to V<sub>cc</sub>, seperated by current controlling resistors. Therefore, we connect each base with a box containing holes.The labels **ON** and **OFF** indicate whether or not we are supplying holes to the base of either transistor. This is the first of four possible logic states. We are supplying neither base of our transistors with a conventional current, therefore no current flows through either NPN transistor.*
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -283,7 +283,7 @@ Figure 13: *Imagine that each part of this design is contained in a set of black
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 14: In this state, the upper NPN transistor is switched on, the switch is effectively closed. Current is supplied to its base, polarising the NPN transistor, by making the lower N-Type segment more positive. Therefore, conventional current passess successfully through the upper NPN transistor. However, no current is being supplied to the base of the lower NPN transistor. Therefore, its lower N-Type segment unchanged. The conventional current from the upper transistor adds holes to the lower transistor's upper N-Type segment, however, this does not add to the downward electrical momentum we require to make the lower transistor a closed switch.
+Figure 14: *In this state, the upper NPN transistor is switched on, the switch is effectively closed. Current is supplied to its base, polarising the NPN transistor, by making the lower N-Type segment more positive. Therefore, conventional current passess successfully through the upper NPN transistor. However, no current is being supplied to the base of the lower NPN transistor. Therefore, its lower N-Type segment unchanged. The conventional current from the upper transistor adds holes to the lower transistor's upper N-Type segment, however, this does not add to the downward electrical momentum we require to make the lower transistor a closed switch.*
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -292,7 +292,7 @@ Figure 14: In this state, the upper NPN transistor is switched on, the switch is
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 15: In this state, we are supplying the base of the lower NPN transistor with a conventional current. Since the upper transistor is an open switch, it is almost like have a ground at both N-Type segments of the lower NPN transistor. Therefore, there is no net downward conventional current.
+Figure 15: *In this state, we are supplying the base of the lower NPN transistor with a conventional current. Since the upper transistor is an open switch, it is almost like have a ground at both N-Type segments of the lower NPN transistor. Therefore, there is no net downward conventional current.*
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -301,7 +301,7 @@ Figure 15: In this state, we are supplying the base of the lower NPN transistor 
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure 16: In this final state, both NPN transistors are closed, switches. Both are receiving a conventional current to their base terminals. Polarisation takes place in both transistors, and an overall downward conventional current results. 
+Figure 16: *In this final state, both NPN transistors are closed, switches. Both are receiving a conventional current to their base terminals. Polarisation takes place in both transistors, and an overall downward conventional current results.* 
 {:refdef}
 
 
