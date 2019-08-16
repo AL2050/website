@@ -223,17 +223,58 @@ Everything that a transistor can do - namely voltage amplification and switching
 
 
 ## Modeling the NAND-Gate circuit
-So now that we understand how a BJT can behave like an electronic switch, let's now devise a model for our logical NAND-gate circuit.
+So now that we understand how we can use a BJT as an electronic switch, let's now devise a model for our logical NAND-gate circuit.
 
-Below are a set of visual depictions to describe the logical function of the transistor arrangement proposed.
+Below are a set of visual depictions to describe the logical function of the transistor arrangement proposed. Two BJTs are connected in series, with the collector of the upper transistor connected to V<sub>cc</sub> and the emitter of the lower transistor connected to ground.
+
+The <span style="color:red">**red circles**</span> represent holes, while the <span style="color:green">**green dashes**</span> represent electrons.
+
+|Terminal Name|Short-hand|
+|----|----|
+|Base|B|
+|----|----|
+|Collector|C|
+|----|----|
+|Emitter|E|
+|----|----|
+
 
 {:refdef: style="text-align: center;"}
-![2-switches](https://al2050.github.io/personal-website/assets/twoSwitches.jpg)
+![2-switches](https://al2050.github.io/personal-website/assets/zerozero.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: The <span style="color:red">**red circles**</span> represent holes, while the <span style="color:green">**green dashes**</span> represent electrons. Two BJTs are connected in series, with collector... upper... lower... ground...
+Figure #: 
 {:refdef}
+
+{:refdef: style="text-align: center;"}
+![zeroone](https://al2050.github.io/personal-website/assets/zeroone.jpg)
+![sw-zeroone](https://al2050.github.io/personal-website/assets/sw-zeroone.jpg)
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+Figure #: 
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+![2-switches](https://al2050.github.io/personal-website/assets/onezero.jpg)
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+Figure #: 
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+![2-switches](https://al2050.github.io/personal-website/assets/oneone.jpg)
+{:refdef}
+
+{:refdef: style="text-align: center;"}
+Figure #: 
+{:refdef}
+
+|Upper BJT Input|Lower BJT Input|Output Logic|
+|----|----|
+|||
 
 The design in this article is for a 2-input 1-output NAND-gate. Therefore, we require two switches for the inputs to represent the HIGH/ON and LOW/OFF states. In order to control our transistor switches, we must supply their Base terminals with a current source. The way we do this here is by connecting the Base terminals to their own resistors of which are connected to the supply voltage.
 
