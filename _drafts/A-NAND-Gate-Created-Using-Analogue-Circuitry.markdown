@@ -310,9 +310,11 @@ Figure #: *An NI Multisim schematic of the final BJT NAND-Gate design. Notice th
 |----|----|----|
 |ON|ON|OFF|
 
+<!--
+### 
+-->
 
-
-## Before the final design
+### Before the final design
 
 {:refdef: style="text-align: center;"}
 ![Pre-optimised-design](https://al2050.github.io/personal-website/assets/pre-optimised-design.jpg)
