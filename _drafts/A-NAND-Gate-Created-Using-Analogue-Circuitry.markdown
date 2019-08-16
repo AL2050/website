@@ -240,11 +240,12 @@ The <span style="color:red">**red circles**</span> represent holes, while the <s
 
 
 {:refdef: style="text-align: center;"}
-![2-switches](https://al2050.github.io/personal-website/assets/zerozero.jpg)
+![zerozero](https://al2050.github.io/personal-website/assets/zerozero.jpg)
+![sw-zerozero](https://al2050.github.io/personal-website/assets/sw-zerozero.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-Figure #: 
+Figure #: *Imagine that each part of this design is contained in a set of black boxes. We are familiar with the NPN transistors shown. V<sub>cc</sub> can be visualised as a box of <span style="color:red">**holes**</span>, and ground as a box of <span style="color:green">**electrons**</span>. We are going to be connecting the base terminals of both transistors to V<sub>cc</sub>, seperated by current controlling resistors. Therefore, we connect each base with a box containing holes.* The labels **ON** and **OFF** indicate whether or not we are supplying holes to the base of either transistor.
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -257,7 +258,8 @@ Figure #:
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-![2-switches](https://al2050.github.io/personal-website/assets/onezero.jpg)
+![onezero](https://al2050.github.io/personal-website/assets/onezero.jpg)
+![sw-onezero](https://al2050.github.io/personal-website/assets/sw-onezero.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -265,7 +267,8 @@ Figure #:
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-![2-switches](https://al2050.github.io/personal-website/assets/oneone.jpg)
+![oneone](https://al2050.github.io/personal-website/assets/oneone.jpg)
+![sw-oneone](https://al2050.github.io/personal-website/assets/sw-oneone.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
