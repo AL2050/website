@@ -310,9 +310,6 @@ Figure #: *An NI Multisim schematic of the final BJT NAND-Gate design. Notice th
 |----|----|----|
 |ON|ON|OFF|
 
-<!--
-### 
--->
 
 ### Before the final design
 
