@@ -1,0 +1,264 @@
+I"�2<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" />
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+<h1 id="tools-used-to-solve-this-challenge">Tools used to solve this challenge</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Technology</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a> (Ubuntu 19.10 (Eoan Ermine) Virtual Machine)</td>
+      <td>Virtualisation to provide a sufficiently secure environment for HITB Reverse Engineering challenges</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td><em><a href="https://github.com/tmux/tmux/wiki" target="_blank">tmux</a></em></td>
+      <td>For partitioning terminal windows</td>
+    </tr>
+    <tr>
+      <td><em><a href="https://ghidra-sre.org/" target="_blank">Ghidra</a></em></td>
+      <td>Disassembler</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td><a href="https://man7.org/linux/man-pages/man1/strings.1.html" target="_blank"><em>strings</em> command</a></td>
+      <td>Data gathering from binary file’s mapped to memory</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td><a href="https://man7.org/linux/man-pages/man1/file.1.html" target="_blank"><em>file</em> command</a></td>
+      <td>Provides us with potentially useful information about the type of binary file.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="challenge-message">Challenge Message</h1>
+
+<p><em>Are you able to cheat me and get the flag?</em></p>
+
+<hr />
+
+<h1 id="walk-through">Walk-Through</h1>
+
+<p>The first thing to do is download the zip archive for this challenge and <a href="https://en.wikipedia.org/wiki/File_verification" target="_blank">verify the authenticity</a> of the downloaded file by its SHA256 checksum.</p>
+
+<p>The extracted file is a binary file. My first move is to run the binary file against the file command, to determine the kind of binary file we are dealing with. The binary file is an <a href="https://upload.wikimedia.org/wikipedia/commons/e/e4/ELF_Executable_and_Linkable_Format_diagram_by_Ange_Albertini.png" target="_blank">executable ELF file</a></p>
+
+<p style="text-align: center;"><img src="http://127.0.0.1:4000/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-file.png" alt="file-command" height="100%" width="100%" /></p>
+
+<p>Notice that the file has been stripped. This is most likely to make debugging it the binary more of a challenge.</p>
+
+<p style="text-align: center;"><img src="http://127.0.0.1:4000/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-strings.png" alt="strings-command" height="75%" width="75%" /></p>
+
+<p><em>strings</em> shows us the standard header information and strings stored in the binary executable file. A few strings
+stand out here.</p>
+
+<ul>
+  <li><strong><span style="color:red">SuperSeKretKey</span>:</strong> This hints at a key that might be used when the program is run.</li>
+  <li><strong><span style="color:green">%20s</span>:</strong> This looks like some formatting based upon the <span style="color:green">%</span> symbol and the same with <span style="color:green">[%s]</span>.</li>
+  <li><strong><a href="https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux" target="_blank">Red Hat</a> with <span style="color:blue">GCC</span>:</strong> an executable compiled from C code. Also the presence of <a href="https://refspecs.linuxbase.org/LSB_3.1.0/LSB-generic/LSB-generic/baselib---libc-start-main-.html" target="_blank">__libc_start_main</a> in the strings output indicates that a main() function is present in this C program.</li>
+</ul>
+
+<p>There is also malloc for memory allocation and strcmp to compare strings which could be used for password verification, if for example
+this executable recieves user input.</p>
+
+<h2 id="static-analysis">Static Analysis</h2>
+
+<p>Now, we have some tangible information about the type of binary file we are working with and some useful strings that we can use a signposts, we can now dig deeper into the behaviour of our binary. For this, I will use Ghidra.</p>
+
+<p style="text-align: center;"><img src="http://127.0.0.1:4000/personal-website/assets/HITB-writeups/Impossible-Password/Ghidra.png" alt="Ghidra" height="40%" width="40%" /></p>
+
+<p>Since the binary file has been stripped, the main function was not interpreted directly by Ghidra, so working through the disassembly I deduced which function was <em>main()</em>. I then read through the disassembly for each function called in <em>main()</em> and renamed them based upon what I think they are doing and converted the local variables to characters for ease of readability. This is the result.</p>
+
+<pre>
+<code class="c">
+void main(void) {
+       int iVar1;
+       char *stage2_str;
+       byte local_48;
+       undefined local_47;
+       undefined local_46;
+       undefined local_45;
+       undefined local_44;
+       undefined local_43;
+       undefined local_42;
+       undefined local_41;
+       undefined local_40;
+       undefined local_3f;
+       undefined local_3e;
+       undefined local_3d;
+       undefined local_3c;
+       undefined local_3b;
+       undefined local_3a;
+       undefined local_39;
+       undefined local_38;
+       undefined local_37;
+       undefined local_36;
+       undefined local_35;
+       char user_input [20];
+       int local_14;
+       char *stage1_str;
+
+       stage1_str = "SuperSeKretKey";
+       local_48 = 'A';
+       local_47 = ']';
+       local_46 = 'K';
+       local_45 = 'r';
+       local_44 = '=';
+       local_43 = '9';
+       local_42 = 'k';
+       local_41 = '0';
+       local_40 = '=';
+       local_3f = '0';
+       local_3e = 'o';
+       local_3d = '0';
+       local_3c = ';';
+       local_3b = 'k';
+       local_3a = '1';
+       local_39 = '?';
+       local_38 = 'k';
+       local_37 = '8';
+       local_36 = '1';
+       local_35 = 't';
+
+       printf("* ");
+
+       __isoc99_scanf(&amp;format,user_input);
+
+       printf("[%s]\n",user_input);
+
+       local_14 = strcmp(user_input,stage1_str);
+       if (local_14 != 0) {
+       	  	  exit(1);
+       }
+       printf("** ");
+
+       __isoc99_scanf(&amp;format,user_input);
+       stage2_str = (char *)generate_second_key(0x14);
+       iVar1 = strcmp(user_input,stage2_str);
+
+	if (iVar1 == 0) {
+	   	print_decrypted_flag(&amp;local_48);
+	}
+	return;
+}
+</code>
+</pre>
+
+<p><em>printf()</em>, <em>scanf()</em> and <em>strcmp()</em> were all determined by Ghidra. <code class="language-plaintext highlighter-rouge">generate_second_key()</code> and <code class="language-plaintext highlighter-rouge">print_decrypted_flag</code>
+were renamed manually based upon what I thought these function are doing. <code class="language-plaintext highlighter-rouge">generate_second_key()</code> is interesting. It uses
+C’s rand() in-built function and conducts some kind of re-ordering or data. However, as you will see in the Dynamic Analysis
+below, I bypassed this function to retrieve the HITB flag.</p>
+
+<h2 id="dynamic-analysis">Dynamic Analysis</h2>
+
+<p>Above, we discovered that the binary file has been <a href="https://medium.com/@tr0id/working-with-stripped-binaries-in-gdb-cacacd7d5a33" target="_blank">stripped</a>. This means a flag was set during compilation that directs the compiler to discard
+debugging symbols. Therefore, we are required to manually determine the entrypoint to the program.</p>
+
+<p>For Dynamic Analysis, I am using <a href="https://www.gnu.org/software/gdb/" target="_blank">GDB</a>.</p>
+
+<p>We can do this with either the <code class="language-plaintext highlighter-rouge">info file</code> or the <code class="language-plaintext highlighter-rouge">info target</code> command.</p>
+
+<p style="text-align: center;"><img src="http://127.0.0.1:4000/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-gdb-info-file.png" alt="info-file" height="75%" width="75%" /></p>
+
+<p>So our entrypoint to the program is at the address <code class="language-plaintext highlighter-rouge">0x4006a0</code> in hex. In other words, the program data starts at this
+location in memory. Our objective is to arrive at the main() function, which we need to find.</p>
+
+<p style="text-align: center;"><img src="http://127.0.0.1:4000/personal-website/assets/HITB-writeups/Impossible-Password/break-at-entrypoint.png" alt="break-at-entrypoint" height="30%" width="30%" /></p>
+
+<p>Setting a breakpoint at <code class="language-plaintext highlighter-rouge">0x4006a0</code> and typing and returning <code class="language-plaintext highlighter-rouge">r</code> (short for run), the program is run up to this memory location. To display the binary diassembly in GDB for a stripped file, we can run the following command.</p>
+
+<p style="text-align: center;"><img src="http://127.0.0.1:4000/personal-website/assets/HITB-writeups/Impossible-Password/20instructions.png" alt="20instructions" height="60%" width="60%" /></p>
+
+<p>If you are working with a file that is not stripped, you can run <code class="language-plaintext highlighter-rouge">disas main</code> for example where <code class="language-plaintext highlighter-rouge">disas</code> is short for
+disassemble.</p>
+
+<p style="text-align: center;"><img src="http://127.0.0.1:4000/personal-website/assets/HITB-writeups/Impossible-Password/ghidra-entrypoint.png" alt="ghidra-entrypoint" height="75%" width="75%" /></p>
+
+<p>In Ghidra, I identified that the main function is not called directly. Instead, <code class="language-plaintext highlighter-rouge">main()</code> is passed into the RDI register
+before <code class="language-plaintext highlighter-rouge">__libc_start_main</code> is called. This is probably a form of obfuscation on the <code class="language-plaintext highlighter-rouge">main()</code> function. Cross-referencing
+the dis-assembly in Ghidra with GDB, the main function must reside at the location <code class="language-plaintext highlighter-rouge">0x40085d</code> in memory.</p>
+
+<p style="text-align: center;"><img src="http://127.0.0.1:4000/personal-website/assets/HITB-writeups/Impossible-Password/gdb-to-main.png" alt="gdb-to-main" height="40%" width="40%" /></p>
+
+<p>Setting a breakpoint at <code class="language-plaintext highlighter-rouge">main()</code> and continuing there with the command <code class="language-plaintext highlighter-rouge">c</code> (short for continue), and displaying the
+disassembly.</p>
+
+<p style="text-align: center;"><img src="http://127.0.0.1:4000/personal-website/assets/HITB-writeups/Impossible-Password/gdb-main.png" alt="gdb-main" height="50%" width="50%" /></p>
+
+<p>At the beginning of <code class="language-plaintext highlighter-rouge">main()</code>, twenty characters are mapped contiguously onto the stack. These characters make up an
+encrypted form of the HITB flag. <code class="language-plaintext highlighter-rouge">print_decrypted_flag()</code> is responsible for the decryption of this flag, and returns
+the key to <a href="https://man7.org/linux/man-pages/man3/stdout.3.html" target="_blank">stdout</a>.</p>
+
+<pre>
+<code class="c">
+       ...
+       printf("* ");
+
+       __isoc99_scanf(&amp;format,user_input);
+
+       printf("[%s]\n",user_input);
+
+       local_14 = strcmp(user_input,stage1_str);
+       if (local_14 != 0) {
+       	  	  exit(1);
+       }
+       printf("** ");
+
+       __isoc99_scanf(&amp;format,user_input);
+       stage2_str = (char *)generate_second_key(0x14);
+       iVar1 = strcmp(user_input,stage2_str);
+
+	if (iVar1 == 0) {
+	   	print_decrypted_flag(&amp;local_48);
+	}
+	return;
+}
+</code>
+</pre>
+
+<p>The Ghidra disassembly above showed us that there are two key stages in the program. If you were to run the program, you 
+would be initially presented with an asterix. The program then awaits input from the user. Granted your input matches <code class="language-plaintext highlighter-rouge">stage1_str</code>, which turns out to be <em>SuperSeKretKey</em>, you succeed to the second stage.</p>
+
+<pre>
+<code class="c">
+void * generate_second_key(int param_1) {
+	int iVar1;
+	time_t tVar2;
+	void *pvVar3;
+	int local_c;
+  
+	tVar2 = time((time_t *)0x0);
+	DAT_00601074 = DAT_00601074 + 1;
+	srand(DAT_00601074 + (int)tVar2 * param_1);
+	pvVar3 = malloc((long)(param_1 + 1));
+
+  	if (pvVar3 != (void *)0x0) {
+    	   	 local_c = 0;
+		 while (local_c &lt; param_1) {
+		         iVar1 = rand();
+			 *(char *)((long)local_c + (long)pvVar3) = (char)(iVar1 % 0x5e) + '!';
+			 local_c = local_c + 1;
+		}
+		*(undefined *)((long)pvVar3 + (long)param_1) = 0;
+    		return pvVar3;
+  	}
+	exit(1);
+}
+</code>
+</pre>
+
+<p>At the second stage of the program, the user is presented with two asterix characters in stdout. The program will run us through this stage, but the program will break before generating the second key since we set our next breakpoint at
+<code class="language-plaintext highlighter-rouge">generate_second_key()</code>.</p>
+:ET
