@@ -10,7 +10,6 @@ categories: Reverse Engineering
 
 # Tools used to solve this challenge
 
-|---|---|
 |Technology|Description|
 |---|---|
 |<a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a> (Ubuntu 19.10 (Eoan Ermine) Virtual Machine)|Virtualisation to provide a sufficiently secure environment for HITB Reverse Engineering challenges|
