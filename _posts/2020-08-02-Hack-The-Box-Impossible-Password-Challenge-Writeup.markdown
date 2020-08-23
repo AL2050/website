@@ -8,6 +8,12 @@ categories: Reverse Engineering
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
+# The Challenge
+
+{:refdef style="text-align: center;"}
+![challenge]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/the-challenge.PNG)
+{:refdef}
+
 # Tools used to solve this challenge
 
 |Technology|Description|
@@ -35,7 +41,7 @@ The first thing to do is download the zip archive for this challenge and <a href
 The extracted file is a binary file. My first move is to run the binary file against the file command, to determine the kind of binary file we are dealing with. The binary file is an <a href="https://upload.wikimedia.org/wikipedia/commons/e/e4/ELF_Executable_and_Linkable_Format_diagram_by_Ange_Albertini.png" target="_blank">executable ELF file</a>
 
 {:refdef style="text-align: center;"}
-![file]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/file.PNG)
+![file]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-file.PNG)
 {:refdef}
 
 Notice that the file has been stripped. This is most likely to make debugging it the binary more of a challenge.
@@ -154,7 +160,7 @@ For Dynamic Analysis, I am using <a href="https://www.gnu.org/software/gdb/" tar
 We can do this with either the ```info file``` or the ```info target``` command.
 
 {:refdef style="text-align: center;"}
-![info-file]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-gdb-info-file.PNG){:height="75%" width="75%"}
+![info-file]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/file.PNG){:height="75%" width="75%"}
 {:refdef}
 
 So our entrypoint to the program is at the address ```0x4006a0``` in hex. In other words, the program data starts at this
