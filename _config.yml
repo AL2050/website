@@ -16,7 +16,7 @@
 
 title: Aaron Lloyd
 # email: 
-description: Talking about and playing with Computer and Network Security
+description: Talking about and playing with Computer and Network Security. All content written by me is by default released freely under the WTFPL. 
 
 baseurl: /personal-website # the subpath of your site, e.g. /blog
 url: https://al2050.github.io # the base hostname & protocol for your site, e.g. http://example.com
