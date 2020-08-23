@@ -38,6 +38,8 @@ The extracted file is a binary file. My first move is to run the binary file aga
 ![file-command]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-file.png)
 {:refdef}
 
+<img src="{{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-file.png" alt="">
+
 Notice that the file has been stripped. This is most likely to make debugging it the binary more of a challenge.
 
 {:refdef style="text-align: center;"}
