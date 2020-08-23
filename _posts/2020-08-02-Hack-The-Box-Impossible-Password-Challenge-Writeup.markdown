@@ -35,7 +35,7 @@ The first thing to do is download the zip archive for this challenge and <a href
 The extracted file is a binary file. My first move is to run the binary file against the file command, to determine the kind of binary file we are dealing with. The binary file is an <a href="https://upload.wikimedia.org/wikipedia/commons/e/e4/ELF_Executable_and_Linkable_Format_diagram_by_Ange_Albertini.png" target="_blank">executable ELF file</a>
 
 {:refdef style="text-align: center;"}
-![file-command]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-file.png)
+![file-command]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/file.png)
 {:refdef}
 
 Notice that the file has been stripped. This is most likely to make debugging it the binary more of a challenge.
