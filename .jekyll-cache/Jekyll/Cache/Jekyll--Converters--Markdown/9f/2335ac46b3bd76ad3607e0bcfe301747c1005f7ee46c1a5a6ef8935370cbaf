@@ -1,4 +1,4 @@
-I"ƒ:<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" />
+I"¢:<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" />
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 
@@ -55,11 +55,11 @@
 
 <p>The extracted file is a binary file. My first move is to run the binary file against the file command, to determine the kind of binary file we are dealing with. The binary file is an <a href="https://upload.wikimedia.org/wikipedia/commons/e/e4/ELF_Executable_and_Linkable_Format_diagram_by_Ange_Albertini.png" target="_blank">executable ELF file</a></p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/file.png" alt="file-command" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/file.PNG" alt="file" /></p>
 
 <p>Notice that the file has been stripped. This is most likely to make debugging it the binary more of a challenge.</p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-strings.png" alt="strings-command" height="75%" width="75%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-strings.PNG" alt="strings-command" height="75%" width="75%" /></p>
 
 <p><em>strings</em> shows us the standard header information and strings stored in the binary executable file. A few strings
 stand out here.</p>
@@ -77,7 +77,7 @@ this executable recieves user input.</p>
 
 <p>Now, we have some tangible information about the type of binary file we are working with and some useful strings that we can use a signposts, we can now dig deeper into the behaviour of our binary. For this, I will use Ghidra.</p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/Ghidra.png" alt="Ghidra" height="40%" width="40%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/Ghidra.png" alt="Ghidra" height="40%" width="40%" /></p>
 
 <p>Since the binary file has been stripped, the main function was not interpreted directly by Ghidra, so working through the disassembly I deduced which function was <em>main()</em>. I then read through the disassembly for each function called in <em>main()</em> and renamed them based upon what I think they are doing and converted the local variables to characters for ease of readability. This is the result.</p>
 
@@ -170,32 +170,32 @@ debugging symbols. Therefore, we are required to manually determine the entrypoi
 
 <p>We can do this with either the <code class="language-plaintext highlighter-rouge">info file</code> or the <code class="language-plaintext highlighter-rouge">info target</code> command.</p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-gdb-info-file.png" alt="info-file" height="75%" width="75%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-gdb-info-file.PNG" alt="info-file" height="75%" width="75%" /></p>
 
 <p>So our entrypoint to the program is at the address <code class="language-plaintext highlighter-rouge">0x4006a0</code> in hex. In other words, the program data starts at this
 location in memory. Our objective is to arrive at the main() function, which we need to find.</p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/break-at-entrypoint.png" alt="break-at-entrypoint" height="30%" width="30%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/break-at-entrypoint.PNG" alt="break-at-entrypoint" height="30%" width="30%" /></p>
 
 <p>Setting a breakpoint at <code class="language-plaintext highlighter-rouge">0x4006a0</code> and typing and returning <code class="language-plaintext highlighter-rouge">r</code> (short for run), the program is run up to this memory location. To display the binary diassembly in GDB for a stripped file, we can run the following command.</p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/20instructions.png" alt="20instructions" height="60%" width="60%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/20instructions.PNG" alt="20instructions" height="60%" width="60%" /></p>
 
 <p>If you are working with a file that is not stripped, you can run <code class="language-plaintext highlighter-rouge">disas main</code> for example where <code class="language-plaintext highlighter-rouge">disas</code> is short for
 disassemble.</p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/ghidra-entrypoint.png" alt="ghidra-entrypoint" height="75%" width="75%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/ghidra-entrypoint.PNG" alt="ghidra-entrypoint" height="75%" width="75%" /></p>
 
 <p>In Ghidra, I identified that the main function is not called directly. Instead, <code class="language-plaintext highlighter-rouge">main()</code> is passed into the RDI register
 before <code class="language-plaintext highlighter-rouge">__libc_start_main</code> is called. This is probably a form of obfuscation on the <code class="language-plaintext highlighter-rouge">main()</code> function. Cross-referencing
 the dis-assembly in Ghidra with GDB, the main function must reside at the location <code class="language-plaintext highlighter-rouge">0x40085d</code> in memory.</p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/gdb-to-main.png" alt="gdb-to-main" height="40%" width="40%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/gdb-to-main.PNG" alt="gdb-to-main" height="40%" width="40%" /></p>
 
 <p>Setting a breakpoint at <code class="language-plaintext highlighter-rouge">main()</code> and continuing there with the command <code class="language-plaintext highlighter-rouge">c</code> (short for continue), and displaying the
 disassembly.</p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/gdb-main.png" alt="gdb-main" height="50%" width="50%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/gdb-main.PNG" alt="gdb-main" height="50%" width="50%" /></p>
 
 <p>At the beginning of <code class="language-plaintext highlighter-rouge">main()</code>, twenty characters are mapped contiguously onto the stack. These characters make up an
 encrypted form of the HITB flag. <code class="language-plaintext highlighter-rouge">print_decrypted_flag()</code> is responsible for the decryption of this flag, and returns
@@ -271,15 +271,15 @@ generated, by setting the <code class="language-plaintext highlighter-rouge">rax
 
 <p>We can use the <code class="language-plaintext highlighter-rouge">layout regs</code> command to provide us with a view of the values in the processorâ€™s general purpose registers.</p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/layout-regs.png" alt="layout-regs" height="75%" width="75%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/layout-regs.PNG" alt="layout-regs" height="75%" width="75%" /></p>
 
 <p>Letâ€™s set the <code class="language-plaintext highlighter-rouge">rax</code> register to zero.</p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/set-rax-0.png" alt="set-rax-0" height="20%" width="20%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/set-rax-0.PNG" alt="set-rax-0" height="20%" width="20%" /></p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/rax-register.png" alt="rax-register" height="30%" width="30%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/rax-register.PNG" alt="rax-register" height="30%" width="30%" /></p>
 
 <p>If we now continue the program, we are presented with the decrypted flag.</p>
 
-<p style="text-align: center;"><img src="http://localhost:4000/personal-website/assets/HITB-writeups/Impossible-Password/HTB-flag.png" alt="HTB-flag" height="30%" width="30%" /></p>
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/HTB-flag.PNG" alt="HTB-flag" height="30%" width="30%" /></p>
 :ET
