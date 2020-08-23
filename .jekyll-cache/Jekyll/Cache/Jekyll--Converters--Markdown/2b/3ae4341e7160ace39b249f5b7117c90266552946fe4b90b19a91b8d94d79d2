@@ -1,4 +1,4 @@
-I"Ó:<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" />
+I"ª:<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" />
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 
@@ -55,7 +55,7 @@
 
 <p>The extracted file is a binary file. My first move is to run the binary file against the file command, to determine the kind of binary file we are dealing with. The binary file is an <a href="https://upload.wikimedia.org/wikipedia/commons/e/e4/ELF_Executable_and_Linkable_Format_diagram_by_Ange_Albertini.png" target="_blank">executable ELF file</a></p>
 
-<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-file.png" alt="file-command" height="100%" width="100%" /></p>
+<p style="text-align: center;"><img src="/assets/HITB-writeups/Impossible-Password/HITB-password-file.png" alt="file-command" height="100%" width="100%" /></p>
 
 <p>Notice that the file has been stripped. This is most likely to make debugging it the binary more of a challenge.</p>
 
