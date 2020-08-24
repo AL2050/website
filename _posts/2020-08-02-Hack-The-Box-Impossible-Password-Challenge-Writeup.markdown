@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "HITB - Impossible Password Writeup"
+title: "HTB - Impossible Password Writeup"
+date:   2020-08-19 18:00:00 +0100
 categories: Reverse Engineering
 ---
 
@@ -11,14 +12,14 @@ categories: Reverse Engineering
 # The Challenge
 
 {:refdef style="text-align: center;"}
-![challenge]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/the-challenge.PNG)
+![challenge]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/the-challenge.PNG)
 {:refdef}
 
 # Tools used to solve this challenge
 
 |Technology|Description|
 |---|---|
-|<a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a> (Ubuntu 19.10 (Eoan Ermine) Virtual Machine)|Virtualisation to provide a sufficiently secure environment for HITB Reverse Engineering challenges|
+|<a href="https://www.virtualbox.org/" target="_blank">VirtualBox</a> (Ubuntu 19.10 (Eoan Ermine) Virtual Machine)|Virtualisation to provide a sufficiently secure environment for HTB Reverse Engineering challenges|
 |---|---|
 |*<a href="https://github.com/tmux/tmux/wiki" target="_blank">tmux</a>*|For partitioning terminal windows|
 |*<a href="https://ghidra-sre.org/" target="_blank">Ghidra</a>*|Disassembler|
@@ -41,13 +42,13 @@ The first thing to do is download the zip archive for this challenge and <a href
 The extracted file is a binary file. My first move is to run the binary file against the file command, to determine the kind of binary file we are dealing with. The binary file is an <a href="https://upload.wikimedia.org/wikipedia/commons/e/e4/ELF_Executable_and_Linkable_Format_diagram_by_Ange_Albertini.png" target="_blank">executable ELF file</a>
 
 {:refdef style="text-align: center;"}
-![file]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-file.PNG)
+![file]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/HTB-password-file.PNG)
 {:refdef}
 
 Notice that the file has been stripped. This is most likely to make debugging it the binary more of a challenge.
 
 {:refdef style="text-align: center;"}
-![strings-command]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/HITB-password-strings.PNG){:height="75%" width="75%"}
+![strings-command]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/HTB-password-strings.PNG){:height="75%" width="75%"}
 {:refdef}
 
 *strings* shows us the standard header information and strings stored in the binary executable file. A few strings
@@ -65,7 +66,7 @@ this executable recieves user input.
 Now, we have some tangible information about the type of binary file we are working with and some useful strings that we can use a signposts, we can now dig deeper into the behaviour of our binary. For this, I will use Ghidra.
 
 {:refdef style="text-align: center;"}
-![Ghidra]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/Ghidra.png){:height="40%" width="40%"}
+![Ghidra]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/Ghidra.png){:height="40%" width="40%"}
 {:refdef}
 
 Since the binary file has been stripped, the main function was not interpreted directly by Ghidra, so working through the disassembly I deduced which function was *main()*. I then read through the disassembly for each function called in *main()* and renamed them based upon what I think they are doing and converted the local variables to characters for ease of readability. This is the result.
@@ -148,7 +149,7 @@ void main(void) {
 *printf()*, *scanf()* and *strcmp()* were all determined by Ghidra. ```generate_second_key()``` and ```print_decrypted_flag```
 were renamed manually based upon what I thought these function are doing. ```generate_second_key()``` is interesting. It uses
 C's rand() in-built function and conducts some kind of re-ordering or data. However, as you will see in the Dynamic Analysis
-below, I bypassed this function to retrieve the HITB flag.
+below, I bypassed this function to retrieve the HTB flag.
 
 ## Dynamic Analysis
 
@@ -160,27 +161,27 @@ For Dynamic Analysis, I am using <a href="https://www.gnu.org/software/gdb/" tar
 We can do this with either the ```info file``` or the ```info target``` command.
 
 {:refdef style="text-align: center;"}
-![info-file]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/file.PNG){:height="75%" width="75%"}
+![info-file]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/file.PNG){:height="75%" width="75%"}
 {:refdef}
 
 So our entrypoint to the program is at the address ```0x4006a0``` in hex. In other words, the program data starts at this
 location in memory. Our objective is to arrive at the main() function, which we need to find.
 
 {:refdef style="text-align: center;"}
-![break-at-entrypoint]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/break-at-entrypoint.PNG){:height="30%" width="30%"}
+![break-at-entrypoint]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/break-at-entrypoint.PNG){:height="30%" width="30%"}
 {:refdef}
 
 Setting a breakpoint at ```0x4006a0``` and typing and returning ```r``` (short for run), the program is run up to this memory location. To display the binary diassembly in GDB for a stripped file, we can run the following command.
 
 {:refdef style="text-align: center;"}
-![20instructions]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/20instructions.PNG){:height="60%" width="60%"}
+![20instructions]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/20instructions.PNG){:height="60%" width="60%"}
 {:refdef}
 
 If you are working with a file that is not stripped, you can run ```disas main``` for example where ```disas``` is short for
 disassemble.
 
 {:refdef style="text-align: center;"}
-![ghidra-entrypoint]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/ghidra-entrypoint.PNG){:height="75%" width="75%"}
+![ghidra-entrypoint]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/ghidra-entrypoint.PNG){:height="75%" width="75%"}
 {:refdef}
 
 In Ghidra, I identified that the main function is not called directly. Instead, ```main()``` is passed into the RDI register
@@ -188,18 +189,18 @@ before ```__libc_start_main``` is called. This is probably a form of obfuscation
 the dis-assembly in Ghidra with GDB, the main function must reside at the location ```0x40085d``` in memory.
 
 {:refdef style="text-align: center;"}
-![gdb-to-main]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/gdb-to-main.PNG){:height="40%" width="40%"}
+![gdb-to-main]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/gdb-to-main.PNG){:height="40%" width="40%"}
 {:refdef}
 
 Setting a breakpoint at ```main()``` and continuing there with the command ```c``` (short for continue), and displaying the
 disassembly.
 
 {:refdef style="text-align: center;"}
-![gdb-main]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/gdb-main.PNG){:height="50%" width="50%"}
+![gdb-main]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/gdb-main.PNG){:height="50%" width="50%"}
 {:refdef}
 
 At the beginning of ```main()```, twenty characters are mapped contiguously onto the stack. These characters make up an
-encrypted form of the HITB flag. ```print_decrypted_flag()``` is responsible for the decryption of this flag, and returns
+encrypted form of the HTB flag. ```print_decrypted_flag()``` is responsible for the decryption of this flag, and returns
 the key to <a href="https://man7.org/linux/man-pages/man3/stdout.3.html" target="_blank">stdout</a>.
 
 <pre>
@@ -273,21 +274,21 @@ generated, by setting the ```rax``` to zero before continuing the program.
 We can use the ```layout regs``` command to provide us with a view of the values in the processor's general purpose registers.
 
 {:refdef style="text-align: center;"}
-![layout-regs]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/layout-regs.PNG){:height="75%" width="75%"}
+![layout-regs]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/layout-regs.PNG){:height="75%" width="75%"}
 {:refdef}
 
 Let's set the ```rax``` register to zero.
 
 {:refdef style="text-align: center;"}
-![set-rax-0]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/set-rax-0.PNG){:height="20%" width="20%"}
+![set-rax-0]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/set-rax-0.PNG){:height="20%" width="20%"}
 {:refdef}
 
 {:refdef style="text-align: center;"}
-![rax-register]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/rax-register.PNG){:height="30%" width="30%"}
+![rax-register]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/rax-register.PNG){:height="30%" width="30%"}
 {:refdef}
 
 If we now continue the program, we are presented with the decrypted flag.
 
 {:refdef style="text-align: center;"}
-![HTB-flag]({{ site.url }}/personal-website/assets/HITB-writeups/Impossible-Password/HTB-flag.PNG){:height="30%" width="30%"}
+![HTB-flag]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/HTB-flag.PNG){:height="30%" width="30%"}
 {:refdef}
