@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "HTB - Impossible Password Writeup"
+title: "HTB - Impossible Password Write-Up"
 date:   2020-08-19 18:00:00 +0100
 categories: Reverse Engineering
 ---
@@ -184,9 +184,7 @@ disassemble.
 ![ghidra-entrypoint]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/ghidra-entrypoint.PNG){:height="75%" width="75%"}
 {:refdef}
 
-In Ghidra, I identified that the main function is not called directly. Instead, ```main()``` is passed into the RDI register
-before ```__libc_start_main``` is called. This is probably a form of obfuscation on the ```main()``` function. Cross-referencing
-the dis-assembly in Ghidra with GDB, the main function must reside at the location ```0x40085d``` in memory.
+Cross-referencing the dis-assembly in Ghidra with GDB, the main function must reside at the location ```0x40085d``` in memory.
 
 {:refdef style="text-align: center;"}
 ![gdb-to-main]({{ site.url }}/personal-website/assets/HTB-writeups/Impossible-Password/gdb-to-main.PNG){:height="40%" width="40%"}

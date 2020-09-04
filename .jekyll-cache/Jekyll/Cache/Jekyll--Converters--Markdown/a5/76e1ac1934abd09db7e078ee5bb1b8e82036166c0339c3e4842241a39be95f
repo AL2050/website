@@ -1,0 +1,143 @@
+I"ê<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" />
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+<h1 id="stages">Stages</h1>
+
+<ol>
+  <li>Download and extract ZIP archive</li>
+  <li>Check master git logs</li>
+  <li>Checkout to commit</li>
+  <li>Get token from config.json</li>
+  <li>Store token in file</li>
+  <li>Use base64 command to decode and retrieve flag</li>
+</ol>
+
+<pre>
+<code class="c">
+//Discord.JS
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const fs = require("fs");
+var config = JSON.parse(fs.readFileSync("./config.json"));
+
+
+//Node-Hue-API
+var hue = require("node-hue-api"),
+	HueApi = hue.HueApi,
+	lightState = hue.lightState;
+
+//Display command results in console
+var displayResult = function(result) {
+
+	console.log(JSON.stringify(result, null, 2));
+	
+};
+
+//Function taken from campushippo.com
+var rgbToHex = function (rgb) { 
+
+  var hex = Number(rgb).toString(16);
+  if (hex.length &lt; 2) {
+
+       hex = "0" + hex;
+  }
+
+  return hex;
+};
+
+//Function taken from campushippo.com
+var fullColorHex = function(r,g,b) {   
+  var header = "0x"
+  var red = rgbToHex(r);
+  var green = rgbToHex(g);
+  var blue = rgbToHex(b);
+  return header+red+green+blue;
+};
+
+//Declarations
+var host = config.host,
+	username = config.username,
+	api = new HueApi(host, username),
+	state = lightState.create(),
+	prefix = config.prefix,
+	lightNum = config.lightNum;
+
+//Bot code
+client.on("ready", () =&gt; {
+	console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.on("message", message =&gt; {
+	if (message.author.bot) return; //Ignore bot messages
+	if (message.content.indexOf(prefix) !== 0) return; //Ensure prefix is at the beginning
+
+	const args = message.content.slice(prefix.length).trim().split(/ +/g); //Split command into arguments
+	const command = args.shift().toLowerCase(); 
+
+	switch (command) {
+
+		case "light.off" : //Turn light off
+			api.setLightState(lightNum, state.off())
+		       .then(displayResult)
+		       .done();
+			message.channel.send("Light Off!");
+			break;
+
+		case "light.on" : //Turn light on
+			api.setLightState(lightNum, state.on())
+			   .then(displayResult)
+			   .done();
+			message.channel.send("Light On!");
+			break;
+
+		case "light.rgb" : //Change light colour
+			let r = args[0];
+			let g = args[1];
+			let b = args[2];
+			api.setLightState(lightNum, state.on().rgb(r, g, b))
+			   .then(displayResult)
+			   .done();
+			const embed = new Discord.RichEmbed()
+				.setTitle('Light Colour Change')
+				.setColor(fullColorHex(r, g, b))
+				.setDescription(`Red Value: ${r}. Green Value: ${g}. Blue Value: ${b}`);
+			message.channel.send(embed);
+			break;
+
+		case "light.switch" : //Switch to different light
+			let num = args[0];
+			lightNum = num;
+			//fs.writeFile("./config.json", JSON.stringify(config))
+			message.channel.send(`Light Number switched to ${lightNum}`);
+	}
+});
+
+client.login(Buffer.from(config.token, 'base64').toString('ascii')) //Login with secret token
+</code>
+</pre>
+
+<pre>
+<code class="c">
+{
+
+	"token": "Replace me with token when in use! Security Risk!",
+	"prefix": "~",
+	"lightNum": "1337",
+	"username": "UmVkIEhlcnJpbmcsIHJlYWQgdGhlIEpTIGNhcmVmdWxseQ==",
+	"host": "127.0.0.1"
+
+}
+</code>
+</pre>
+
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HTB-writeups/Illumination/git-master-logs.PNG" alt="logs" /></p>
+
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HTB-writeups/Illumination/checkout-to-commit.PNG" alt="checkout-to-commit" /></p>
+
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HTB-writeups/Illumination/token-file.PNG" alt="token-file" /></p>
+
+<p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HTB-writeups/Illumination/htb-flag.PNG" alt="htb-flag" /></p>
+:ET

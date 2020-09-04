@@ -1,4 +1,4 @@
-I"X;<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" />
+I"Ð9<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css" />
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
 
@@ -190,9 +190,7 @@ disassemble.</p>
 
 <p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HTB-writeups/Impossible-Password/ghidra-entrypoint.PNG" alt="ghidra-entrypoint" height="75%" width="75%" /></p>
 
-<p>In Ghidra, I identified that the main function is not called directly. Instead, <code class="language-plaintext highlighter-rouge">main()</code> is passed into the RDI register
-before <code class="language-plaintext highlighter-rouge">__libc_start_main</code> is called. This is probably a form of obfuscation on the <code class="language-plaintext highlighter-rouge">main()</code> function. Cross-referencing
-the dis-assembly in Ghidra with GDB, the main function must reside at the location <code class="language-plaintext highlighter-rouge">0x40085d</code> in memory.</p>
+<p>Cross-referencing the dis-assembly in Ghidra with GDB, the main function must reside at the location <code class="language-plaintext highlighter-rouge">0x40085d</code> in memory.</p>
 
 <p style="text-align: center;"><img src="https://al2050.github.io/personal-website/assets/HTB-writeups/Impossible-Password/gdb-to-main.PNG" alt="gdb-to-main" height="40%" width="40%" /></p>
 

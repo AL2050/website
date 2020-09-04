@@ -1,0 +1,11 @@
+---
+layout: post
+title: "TITLE"
+date:   2020-09-01 11:11:00 +0100
+categories: [HackTheBox]
+---
+
+
+{:refdef style="text-align: center;"}
+![img-name]({{ site.url }}/personal-website/assets/path/to/img.PNG)
+{:refdef}

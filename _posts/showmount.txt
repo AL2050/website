@@ -1,0 +1,24 @@
+aaron@aaron-VirtualBox:~$ showmount --exports 10.10.10.180
+Export list for 10.10.10.180:
+/site_backups (everyone)
+
+root@aaron-VirtualBox:/home/aaron# mount 10.10.10.180:/site_backups /home/aaron/site_backups
+oroot@aaron-VirtualBox:/home/aaron/site_backups# ll
+total 123
+drwx------  2 nobody 4294967294  4096 Feb 23  2020 ./
+drwxr-xr-x 26 aaron  aaron       4096 Sep  1 15:00 ../
+drwx------  2 nobody 4294967294    64 Feb 20  2020 App_Browsers/
+drwx------  2 nobody 4294967294  4096 Feb 20  2020 App_Data/
+drwx------  2 nobody 4294967294  4096 Feb 20  2020 App_Plugins/
+drwx------  2 nobody 4294967294    64 Feb 20  2020 aspnet_client/
+drwx------  2 nobody 4294967294 49152 Feb 20  2020 bin/
+drwx------  2 nobody 4294967294  8192 Feb 20  2020 Config/
+drwx------  2 nobody 4294967294    64 Feb 20  2020 css/
+-rwx------  1 nobody 4294967294   152 Nov  1  2018 default.aspx*
+-rwx------  1 nobody 4294967294    89 Nov  1  2018 Global.asax*
+drwx------  2 nobody 4294967294  4096 Feb 20  2020 Media/
+drwx------  2 nobody 4294967294    64 Feb 20  2020 scripts/
+drwx------  2 nobody 4294967294  8192 Feb 20  2020 Umbraco/
+drwx------  2 nobody 4294967294  4096 Feb 20  2020 Umbraco_Client/
+drwx------  2 nobody 4294967294  4096 Feb 20  2020 Views/
+-rwx------  1 nobody 4294967294 28539 Feb 20  2020 Web.config*

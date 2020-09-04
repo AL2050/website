@@ -1,0 +1,8 @@
+root@aaron-VirtualBox:/home/aaron# ./src/john-1.9.0-jumbo-1/run/john sha.txt --format=Raw-SHA1 --wordlist=rockyou.txt 
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-SHA1 [SHA1 256/256 AVX2 8x])
+Press 'q' or Ctrl-C to abort, almost any other key for status
+baconandcheese   (?)
+1g 0:00:00:01 DONE (2020-09-02 13:34) 0.6172g/s 6064Kp/s 6064Kc/s 6064KC/s baconandcheese..bacon9092
+Use the "--show --format=Raw-SHA1" options to display all of the cracked passwords reliably
+Session completed
