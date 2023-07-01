@@ -18,7 +18,7 @@ For example, we could set up a potentiometer with one end tied to a collector vo
 
 
 {:refdef: style="text-align: center;"}
-![pot1](https://al2050.github.io/personal-website/assets/pot.png)
+![pot1](/personal-website/assets/pot.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -26,7 +26,7 @@ Figure #: Picture a potentiometer from a birds-eye view. The wiper of the potent
 {: refdef}
 
 {:refdef: style="text-align: center;"}
-![pot2](https://al2050.github.io/personal-website/assets/pot2.png)
+![pot2](/personal-website/assets/pot2.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -34,7 +34,7 @@ Figure #: As the arrow moves clockwise, the resistance will increase, and theref
 {: refdef}
 
 {:refdef: style="text-align: center;"}
-![potChange1](https://al2050.github.io/personal-website/assets/potChange1.png)
+![potChange1](/personal-website/assets/potChange1.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -42,7 +42,7 @@ Figure #: We can represent this change in resistance mathematically like so.
 {: refdef}
 
 {:refdef: style="text-align: center;"}
-![potChange2](https://al2050.github.io/personal-website/assets/potChange2.png)
+![potChange2](/personal-website/assets/potChange2.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}

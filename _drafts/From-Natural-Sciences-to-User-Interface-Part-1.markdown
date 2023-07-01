@@ -52,7 +52,7 @@ First, here is an itinerary of the topics we will be covering in this article se
 Have you ever wondered what is inside a logic gate? In digital electronics, a logical NAND gate, for example, is represented diagrammatically in the following manner:
 
 {:refdef: style="text-align: center;"}
-![NAND-gate-symbol](https://al2050.github.io/personal-website/assets/nandGate.png)
+![NAND-gate-symbol](/personal-website/assets/nandGate.png)
 {: refdef}
 
 But, what lies under the hood of this mysterious symbol? In this article, we are going to explore the NAND gate, how it works and why it is configured the way it is. We are looking at the NAND gate because, in electronics, this gate is known as a universal gate, ['meaning that any other gate can be represented as a combination of NAND gates'.][nandLogic-wiki]{:target="_blank"} This is also known as [functional completeness][functional-completeness]{:target="_blank"}.
