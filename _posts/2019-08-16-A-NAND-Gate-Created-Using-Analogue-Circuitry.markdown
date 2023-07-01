@@ -23,7 +23,7 @@ We have analogue systems and then we have digital systems. An analogue system tr
 The conversion of a continuous signal to a digital signal is typically achieved through an electronic device known as an Analogue-to-Digital Converter (ADC), which defines a set of discrete states that are allowed to exist. The analogue waves passing through an ADC is rounded either up or down depending on its value at a specific point.
 
 {:refdef: style="text-align: center;"}
-![continuous](https://al2050.github.io/personal-website/assets/cont.png)
+![continuous](/personal-website/assets/cont.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -31,7 +31,7 @@ Figure 1: *You can imagine a continuous signal as being perfectly smooth. There 
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-![discrete](https://al2050.github.io/personal-website/assets/discr.png)
+![discrete](/personal-website/assets/discr.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -62,7 +62,7 @@ The following types of physical devices are in fact possible.
 The significance of digital circuitry motivated me to design and build an analogue circuit that is the equivalent of a digital NAND-Gate; a component designed to implement what is called [Boolean Logic][boolean]{:target="_blank"}.
 
 {:refdef: style="text-align: center;"}
-![blackBox](https://al2050.github.io/personal-website/assets/blackBox.png)
+![blackBox](/personal-website/assets/blackBox.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -70,7 +70,7 @@ Figure 3: *Imagine we have a black box, containing the necessary circuitry to re
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-![blackBox-truthTable](https://al2050.github.io/personal-website/assets/blackBoxTruthTable.png)
+![blackBox-truthTable](/personal-website/assets/blackBoxTruthTable.png)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -97,7 +97,7 @@ Before we delve into the specifics of the NAND-gate design, let's first explore 
 
 ## Transistor Internals 101 - <sup><sub><sup><sub><sup><sub>Small</sub></sup></sub></sup></sub></sup> but **MIGHTY**!
 {:refdef: style="text-align: center;"}
-![smallButMighty](https://al2050.github.io/personal-website/assets/smallButMighty.jpg)
+![smallButMighty](/personal-website/assets/smallButMighty.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -138,7 +138,7 @@ An N-type semiconductor material has a dominance of electrons in its structure, 
 Imagine a segment of N-Type and a segment of P-Type seamlessly connected like so:
 
 {:refdef: style="text-align: center;"}
-![NP-Junction](https://al2050.github.io/personal-website/assets/NP_junction.jpg)
+![NP-Junction](/personal-website/assets/NP_junction.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -148,7 +148,7 @@ Figure 6
 Opposite charges attract and like charges repel. Therefore, if we place a voltage source across the NP-junction like so:
 
 {:refdef: style="text-align: center;"}
-![NP-ForwardBias](https://al2050.github.io/personal-website/assets/NP_forwardBias.jpg)
+![NP-ForwardBias](/personal-website/assets/NP_forwardBias.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -168,7 +168,7 @@ This circuit is the equivalent of a diode in the forward bias configuration. The
 Observing the above NP semiconductor arrangement, the polarity of the NP material provides a polarity in net charge and so a current will successfully flow through the material, with a sufficient potential difference across it. Hence the semi-conductor will begin to conduct.
 
 {:refdef: style="text-align: center;"}
-![NP-ReverseBias](https://al2050.github.io/personal-website/assets/NP_reverseBias.jpg)
+![NP-ReverseBias](/personal-website/assets/NP_reverseBias.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -184,7 +184,7 @@ Heat is produced, and breakdown of the material takes place, as shown in the dep
 When this breakdown takes place, the diode will heat up, and depending on the voltage applied across the diode in reverse bias, the diode may explode due to the rate of depletion, resulting in rapid heating and expansion.
 
 {:refdef: style="text-align: center;"}
-![NP-Deplete](https://al2050.github.io/personal-website/assets/NP_deplete.jpg)
+![NP-Deplete](/personal-website/assets/NP_deplete.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -198,7 +198,7 @@ This brings us onto the internals of the Bipolar-Junction-Transistor.
 Take our NP segment from the last section, and now sandwich the P-Type segment with a second N-Type segment. This is the equivalent of two back-to-back diodes. 
 
 {:refdef: style="text-align: center;"}
-![NPN-BJT](https://al2050.github.io/personal-website/assets/b2b_diodes.jpg)
+![NPN-BJT](/personal-website/assets/b2b_diodes.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -208,7 +208,7 @@ Figure 10
 Each segment of the NPN sandwich is controlled by a terminal like so:
 
 {:refdef: style="text-align: center;"}
-![NPN-BJT](https://al2050.github.io/personal-website/assets/npnbjt.jpg)
+![NPN-BJT](/personal-website/assets/npnbjt.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -221,7 +221,7 @@ The *Bipolar* term in BJT means that there are two polarised regions in the tran
 Let's apply a voltage across our NPN sandwich like we did with the NP-segment above.
 
 {:refdef: style="text-align: center;"}
-![1-BJT](https://al2050.github.io/personal-website/assets/1bjt.jpg)
+![1-BJT](/personal-website/assets/1bjt.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -269,8 +269,8 @@ The <span style="color:red">**red circles**</span> represent holes, while the <s
 The design in this article is for a 2-input 1-output NAND-gate. Therefore, we require two switches for the inputs to represent the HIGH/ON and LOW/OFF states. In order to control our transistor switches, we must supply their Base terminals with a current source. The way we do this here is by connecting the Base terminals to their own resistors of which are connected to the supply voltage.
 
 {:refdef: style="text-align: center;"}
-![zerozero](https://al2050.github.io/personal-website/assets/zerozero.jpg)
-![sw-zerozero](https://al2050.github.io/personal-website/assets/sw-zerozero.jpg)
+![zerozero](/personal-website/assets/zerozero.jpg)
+![sw-zerozero](/personal-website/assets/sw-zerozero.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -278,8 +278,8 @@ Figure 13: *Imagine that each part of this design is contained in a set of black
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-![zeroone](https://al2050.github.io/personal-website/assets/zeroone.jpg)
-![sw-zeroone](https://al2050.github.io/personal-website/assets/sw-zeroone.jpg)
+![zeroone](/personal-website/assets/zeroone.jpg)
+![sw-zeroone](/personal-website/assets/sw-zeroone.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -287,8 +287,8 @@ Figure 14: *In this state, the upper NPN transistor is switched on, the switch i
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-![onezero](https://al2050.github.io/personal-website/assets/onezero.jpg)
-![sw-onezero](https://al2050.github.io/personal-website/assets/sw-onezero.jpg)
+![onezero](/personal-website/assets/onezero.jpg)
+![sw-onezero](/personal-website/assets/sw-onezero.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -296,8 +296,8 @@ Figure 15: *In this state, we are supplying the base of the lower NPN transistor
 {:refdef}
 
 {:refdef: style="text-align: center;"}
-![oneone](https://al2050.github.io/personal-website/assets/oneone.jpg)
-![sw-oneone](https://al2050.github.io/personal-website/assets/sw-oneone.jpg)
+![oneone](/personal-website/assets/oneone.jpg)
+![sw-oneone](/personal-website/assets/sw-oneone.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -308,7 +308,7 @@ Figure 16: *In this final state, both NPN transistors are closed, switches. Both
 Now to complete our design, we add in our current controlling resistors between our supply voltage and the switches to the base of each transistor, and finally, connect an LED in parallel with the two transistors in series to display the logical output when testing.
 
 {:refdef: style="text-align: center;"}
-![NAND Gate Circuit Model in Multisim](https://al2050.github.io/personal-website/assets/NAND-Gate-Circuit-Model.JPG)
+![NAND Gate Circuit Model in Multisim](/personal-website/assets/NAND-Gate-Circuit-Model.JPG)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -342,7 +342,7 @@ Figure 17: *An NI Multisim schematic of the final BJT NAND-Gate design. Notice t
 ### Before the final design
 
 {:refdef: style="text-align: center;"}
-![Pre-optimised-design](https://al2050.github.io/personal-website/assets/pre-optimised-design.jpg)
+![Pre-optimised-design](/personal-website/assets/pre-optimised-design.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -352,7 +352,7 @@ Figure 18: *Here is a whiteboard working, before optimising the design to its fi
 
 ## Physical Breadboard NAND-Gate circuit
 {:refdef: style="text-align: center;"}
-![Physical-NAND-Gate-Circuit](https://al2050.github.io/personal-website/assets/NAND_Gate_Circuit.jpg)
+![Physical-NAND-Gate-Circuit](/personal-website/assets/NAND_Gate_Circuit.jpg)
 {:refdef}
 
 {:refdef: style="text-align: center;"}
@@ -404,7 +404,7 @@ Figure #: Video here
 [mosfet]: https://www.elprocus.com/mosfet-as-a-switch-circuit-diagram-free-circuits/
 
 
-[BC548-Datasheet]: https://al2050.github.io/personal-website/assets/BC548.pdf
+[BC548-Datasheet]: /personal-website/assets/BC548.pdf
 
 [BJT-applications]: https://en.wikipedia.org/wiki/Bipolar_junction_transistor#Applications
 
