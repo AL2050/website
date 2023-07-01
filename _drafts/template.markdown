@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: "TITLE"
 date:   YYYY-MM-DD HH:MM:SS +0100
 categories: [,]

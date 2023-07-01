@@ -14,14 +14,19 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Aaron Lloyd
+# name: Blog
+title: Aaron L
 # email: 
-description: Talking about and playing with Computer and Network Security. All content written by me is by default released freely under the WTFPL. 
+description: Stuff.
 
-baseurl: /personal-website # the subpath of your site, e.g. /blog
-url: https://al2050.github.io # the base hostname & protocol for your site, e.g. http://example.com
+author:
+  name: th3-k3rnl
+  email: email-goes-here
+
+baseurl: /blog # the subpath of your site, e.g. /blog
+url: https://th3-k3rnl.github.io # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: 
-github_username:  AL2050
+github_username: th3-k3rnl
 
 # Build settings
 markdown: kramdown
